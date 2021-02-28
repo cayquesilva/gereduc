@@ -6,5 +6,78 @@
 
 html, body{
     height: 100%;
-    background: rgba(220, 220, 220, 0.7);
+}
+
+.container{
+    max-width: 1280px;
+    padding: 0 2%;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+/*CONF DE ESTILOS*/
+
+/*Header e Topbar*/
+header{
+    position: relative;
+    height: 50px;
+    z-index: 1;
+}
+
+header .top-bar{
+    background: rgb(90, 90, 90);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 50px;
+}
+
+header .top-bar > div{
+    width: 33.3%;
+    text-align: center;
+}
+
+/*Navegação e Conteúdos*/
+
+section.main{
+    background-color: aquamarine;
+    position: relative;
+    top: -50px;
+    z-index: 0;
+    display: flex;
+    flex-direction: row;
+}
+
+section.main .navegacao{
+    min-width: 20%;
+    width: 250px;
+    height: 100vh;
+    background-color: aqua;
+    padding-top: 50px;
+}
+
+section.main .main-conteudo{
+    width: 130%;
+    height: 100vh;
+    background-color: bisque;
+    padding-top: 50px;
+}
+
+section.main .main-conteudo .box-conteudo{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+section.main .main-conteudo .box-conteudo .box-individual{
+    padding: 10px 25px;
+    
+}
+
+section.main .main-conteudo a{
+    text-decoration: none;
 }
