@@ -22,58 +22,24 @@ ul{
     list-style-type: none;
 }
 
+ul a{
+    text-decoration: none;
+}
 
 /*CONF DE ESTILOS*/
 
 /*Header e Topbar*/
-header{
-    position: relative;
-    height: 50px;
-    z-index: 1;
-}
 
-header .top-bar{
-    background: rgb(90, 90, 90);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    line-height: 50px;
-}
-
-header .top-bar > div{
-    width: 33.3%;
+header .top-bar .menu,
+header .top-bar .logo{
     text-align: center;
 }
 
+header .top-bar .nav-menu ul li{
+    display: inline-block;
+}
+
 /*Navegação e Conteúdos*/
-
-section.main{
-    background-color: aquamarine;
-    position: relative;
-    top: -50px;
-    z-index: 0;
-
-}
-
-section.main .navegacao{
-    width: 30%;
-    height: 100vh;
-    background-color: aqua;
-    padding-top: 50px;
-    float: left;
-}
-
-section.main .navegacao nav{
-    width: 100%;
-}
-
-section.main .main-conteudo{
-    float: right;
-    width: 70%;
-    height: 100vh;
-    background-color: bisque;
-    padding-top: 50px;
-}
 
 section.main .main-conteudo .box-conteudo{
     display: flex;
@@ -83,14 +49,14 @@ section.main .main-conteudo .box-conteudo{
 }
 
 section.main .main-conteudo .box-conteudo .box-individual{
-    padding: 10px 25px;
-    
+    padding: 15px;
+    margin-top: 25px;
+    border: 1px solid #ccc;
 }
 
-section.main .main-conteudo a{
-    text-decoration: none;
+section.main .main-conteudo .box-conteudo .box-individual h1{
+    padding-bottom: 20px;
 }
-
 
 /*FOOTER*/
 
@@ -100,7 +66,8 @@ footer{
     background-color: white;
     font-size: 14px;
     padding-bottom: 50px;
-
+    position: fixed;
+    bottom: 0;
 }
 
 footer.fixed{

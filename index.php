@@ -27,22 +27,23 @@ $url = isset($_GET['url']) ? $_GET['url'] : 'home';
     <header>
         <div class="container">
             <div class="top-bar">
-                <div class="Menu">
-                    menu
-                </div><!--menu-->
                 <div class="logo">Logo</div><!--logo-->
-                <div class="social"><!--social-->
-                    Face
-                    Insta
-                </div>
+                <div class="menu">
+                    <nav class="nav-menu">
+                        <ul>
+                            <li><a href="<?php echo INCLUDE_PATH;?>cursos">Cursos</a></li>
+                            <li><a href="<?php echo INCLUDE_PATH;?>noticias">Noticias</a></li>
+                            <li><a realtime="inventario" href="<?php echo INCLUDE_PATH;?>">Inventário</a></li>
+                            <li><a realtime="visitas" href="<?php echo INCLUDE_PATH;?>">Visitas</a></li>
+                        </ul>
+                    </nav><!--nav-menu-->
+                </div><!--menu-->
             </div><!--top-bar-->
         </div><!--container-->
     </header>
 
     <div class="container-principal">
         <?php
-            
-            
             if(file_exists('pages/'.$url.".php")){
                 include('pages/'.$url.".php");
             }else{
