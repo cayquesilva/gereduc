@@ -9,7 +9,7 @@ html,body{
     height: 100%;
     background: rgb(230, 230, 230);
 }
-/*ESTILIZANDO PAGINA*/
+/*ESTILIZANDO PAGINA DE LOGIN*/
 
 .box-login{
     max-width: 600px;
@@ -79,3 +79,37 @@ html,body{
     font-size: 16px;
 }
 
+/*ESTILIZANDO MAIN*/
+
+.center{
+    padding: 0 2%;
+    margin: 0 auto;
+}
+
+.clear{
+    clear: both;
+}
+
+header{
+    width: calc(100% - 300px);
+    padding: 10px 0;
+    background: #78909c;
+    float: left;
+}
+
+aside.menu{
+    float: left;
+    width: 300px;
+    height: 100%;
+    background: #455a64;
+    overflow-y: auto;
+}
+
+.logout{
+    float: right;
+}
+
+.logout a{
+    color: white;
+    font-size: 20px;
+}
