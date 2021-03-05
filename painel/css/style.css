@@ -70,3 +70,12 @@ html,body{
     font-weight: bolder;
 }
 
+.erro-box{
+    width: 100%;
+    padding: 8px 2%;
+    text-align: center;
+    background: #f75353;
+    color: white;
+    font-size: 16px;
+}
+
