@@ -103,6 +103,40 @@ aside.menu{
     height: 100%;
     background: #455a64;
     overflow-y: auto;
+    padding: 10px;
+}
+
+.box-usuario{
+    text-align: center;
+}
+
+.box-usuario .avatar-usuario{
+    text-align: left;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 3px solid #2f3d42;
+}
+
+.box-usuario .avatar-usuario i{
+    font-size: 50px;
+    color: #2f3d42;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.nome-usuario{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.nome-usuario p{
+    font-size: 16px;
+    color: white;
 }
 
 .logout{
@@ -111,5 +145,18 @@ aside.menu{
 
 .logout a{
     color: white;
-    font-size: 20px;
+    font-size: 23px;
+    text-decoration: none;
+}
+
+.logout a > span{
+    font-size: 17px;
+    padding-left: 8px;
+}
+
+.menu-btn{
+    float: left;
+    cursor: pointer;
+    font-size: 23px;
+    color: white;
 }
