@@ -35,6 +35,21 @@
                 <p><?php echo pegaCargo($_SESSION['cargo']);?></p>
             </div><!--nome-usuario-->
         </div><!--box-usuario-->
+        <div class="items-menu">
+            <h2>Cadastro</h2>
+            <a href="">Cadastrar Notícia</a>
+            <a href="">Cadastrar Curso</a>
+            <a href="">Cadastrar Slide</a>
+            <h2>Gestão</h2>
+            <a href="">Listar Notícias</a>
+            <a href="">Listar Cursos</a>
+            <a href="">Listar Slides</a>
+            <h2>Administração do Painel</h2>
+            <a href="">Editar Usuário</a>
+            <a href="">Adicionar Usuários</a>
+            <h2>Configuração Geral</h2>
+            <a href="">Editar</a>
+        </div><!--items-menu-->
     </div><!--menu-wrapper-->
 </aside><!--menu-->
     <header>
@@ -50,16 +65,27 @@
     </header>   
     <div class="content">
         <div class="box-content left w100">
-            
-        </div><!--box=content-->
-        <div class="box-content left w100">
-            
-        </div><!--box=content-->
-        <div class="box-content left w50">
-            
-        </div><!--box=content-->
-        <div class="box-content right w50">
-            
+            <h2><i class="fa fa-home"></i> Painel de Controle - <?php echo $_SESSION['empresa'];?></h2>
+            <div class="box-metricas">
+                <div class="box-metrica-single red">
+                    <div class="box-metrica-wraper">
+                        <h2>Usuários Online</h2>
+                        <p>10</p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de visitas</h2>
+                        <p>100</p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single green">
+                    <div class="box-metrica-wraper">
+                        <h2>Visitas hoje</h2>
+                        <p>3</p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+            </div><!--box-metricas-->
         </div><!--box=content-->
         <div class="clear"></div>
     </div><!--content-->

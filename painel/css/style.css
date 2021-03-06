@@ -30,6 +30,18 @@ body{
     float: right !important;
 }
 
+.blue{
+    background: #1e42a5;
+}
+
+.red{
+    background: #882020;
+}
+
+.green{
+    background: green;
+}
+
 /*ESTILIZANDO PAGINA DE LOGIN*/
 
 .box-login{
@@ -130,7 +142,7 @@ aside.menu{
     background: #455a64;
     overflow-y: auto;
     overflow-x: hidden;
-    padding: 10px;
+    padding: 10px 0;
     position: fixed;
     left: 0;
     top: 0;
@@ -147,6 +159,24 @@ aside.menu{
     border-radius: 50%;
     display: inline-block;
     border: 3px solid #2f3d42;
+}
+
+.imagem-usuario{
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border: 3px solid #2f3d42;
+    position: relative;
+    border-radius: 50%;
+}
+
+.imagem-usuario img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
 }
 
 .box-usuario .avatar-usuario i{
@@ -206,9 +236,53 @@ aside.menu{
     margin-bottom: 10px;
 }
 
+.items-menu{
+    margin-top: 30px;
+}
 
+.items-menu h2{
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+    background: #2f3042;
+    color: white;
+    padding: 8px;
+}
+
+.items-menu a{
+    display: block;
+    padding: 8px;
+    font-weight: 300;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid #2f3042;
+}
+
+.box-metricas{
+    margin-top: 20px;
+}
+
+.box-metrica-single{
+    display: inline-block;
+    width: calc(98% / 3);
+    padding: 25px;
+}
+
+.box-metrica-wraper h2,.box-metrica-wraper p{
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+}
 
 /*Media Querys*/
+
+@media screen and (max-width: 1204px){
+    .box-metrica-single{
+        width: 100%;
+        margin-top: 8px;
+    }
+}
 
 @media screen and (max-width: 768px){
     .menu{
@@ -227,3 +301,8 @@ aside.menu{
     }
 }
 
+@media screen and (max-width: 400px){
+    .menu-wraper{
+        width: 200px;
+    }
+}
