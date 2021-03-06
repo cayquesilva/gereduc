@@ -33,8 +33,8 @@ $url = isset($_GET['url']) ? $_GET['url'] : 'home';
                         <ul>
                             <li><a href="<?php echo INCLUDE_PATH;?>cursos">Cursos</a></li>
                             <li><a href="<?php echo INCLUDE_PATH;?>noticias">Noticias</a></li>
-                            <li><a realtime="inventario" href="<?php echo INCLUDE_PATH;?>">Inventário</a></li>
-                            <li><a realtime="visitas" href="<?php echo INCLUDE_PATH;?>">Visitas</a></li>
+                            <li><a realtime="contato" href="<?php echo INCLUDE_PATH;?>">Contato</a></li>
+                            <li><a href="<?php echo INCLUDE_PATH_PAINEL;?>">Painel de Controle</a></li>
                         </ul>
                     </nav><!--nav-menu-->
                 </div><!--menu-->
@@ -48,7 +48,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : 'home';
                 include('pages/'.$url.".php");
             }else{
                 //pagina não encontrada
-                if($url != 'noticias' && $url != 'cursos'){
+                if($url != 'contato'){
                     $pagina404 = true;
                     include('pages/404.php');
                 }else{

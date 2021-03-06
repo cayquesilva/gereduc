@@ -28,7 +28,6 @@
                 $_SESSION['cargo']= $info['cargo'];
                 $_SESSION['nome']=$info['nome'];
                 $_SESSION['img']=$info['img'];
-                $_SESSION['empresa']=$info['empresa'];
                 header('Location: '.INCLUDE_PATH_PAINEL);
                 die();
             }else{

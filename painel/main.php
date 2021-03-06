@@ -37,7 +37,7 @@
         </div><!--box-usuario-->
         <div class="items-menu">
             <h2>Cadastro</h2>
-            <a href="">Cadastrar Notícia</a>
+            <a href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
             <a href="">Cadastrar Curso</a>
             <a href="">Cadastrar Slide</a>
             <h2>Gestão</h2>
@@ -54,40 +54,18 @@
 </aside><!--menu-->
     <header>
         <div class="center">
-        <div class="menu-btn">
-            <i class="fa fa-bars"></i>
-        </div><!--menu-btn-->
+            <div class="menu-btn">
+                <i class="fa fa-bars"></i>
+            </div><!--menu-btn-->
             <div class="logout">
+                <a href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Página Inicial</span></a>
                 <a href="<?php echo INCLUDE_PATH_PAINEL ?>?logout"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a>
             </div><!--logout-->
             <div class="clear"></div>
         </div><!--center-->
     </header>   
     <div class="content">
-        <div class="box-content left w100">
-            <h2><i class="fa fa-home"></i> Painel de Controle - <?php echo $_SESSION['empresa'];?></h2>
-            <div class="box-metricas">
-                <div class="box-metrica-single red">
-                    <div class="box-metrica-wraper">
-                        <h2>Usuários Online</h2>
-                        <p>10</p>
-                    </div><!--box-metrica-wraper-->
-                </div><!--box-metrica-single-->
-                <div class="box-metrica-single blue">
-                    <div class="box-metrica-wraper">
-                        <h2>Total de visitas</h2>
-                        <p>100</p>
-                    </div><!--box-metrica-wraper-->
-                </div><!--box-metrica-single-->
-                <div class="box-metrica-single green">
-                    <div class="box-metrica-wraper">
-                        <h2>Visitas hoje</h2>
-                        <p>3</p>
-                    </div><!--box-metrica-wraper-->
-                </div><!--box-metrica-single-->
-            </div><!--box-metricas-->
-        </div><!--box=content-->
-        <div class="clear"></div>
+        <?php Painel::carregarPagina();?>
     </div><!--content-->
     <script src="<?php echo INCLUDE_PATH ?>js/jquery.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/main.js"></script>

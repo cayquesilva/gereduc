@@ -15,7 +15,7 @@
     define('USER','root');
     define('PASSWORD','');
     define('DATABASE','gereduc');
-
+    define('NOME_EMPRESA','InteliEduc');
     //Funções
     function pegaCargo($cargo){
         $arr = [

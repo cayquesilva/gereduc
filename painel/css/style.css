@@ -207,10 +207,11 @@ aside.menu{
     color: white;
     font-size: 23px;
     text-decoration: none;
+    padding-left: 8px;
 }
 
-.logout a > span{
-    font-size: 17px;
+.logout a span{
+    font-size: 16px;
     padding-left: 8px;
 }
 
@@ -233,7 +234,7 @@ aside.menu{
 .box-content{
     background: white;
     padding: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 25px;
 }
 
 .items-menu{
@@ -261,12 +262,14 @@ aside.menu{
 
 .box-metricas{
     margin-top: 20px;
+    text-align: center;
 }
 
 .box-metrica-single{
     display: inline-block;
     width: calc(98% / 3);
     padding: 25px;
+    text-align: left;
 }
 
 .box-metrica-wraper h2,.box-metrica-wraper p{
@@ -275,9 +278,22 @@ aside.menu{
     color: white;
 }
 
+
+/*Tabela Responsiva*/
+
+.tabela-resp{
+    max-width: 70%;
+    margin: 20px auto;
+}
+
+.col{
+    float: left;
+    width: 50%;
+}
+
 /*Media Querys*/
 
-@media screen and (max-width: 1204px){
+@media screen and (max-width: 978px){
     .box-metrica-single{
         width: 100%;
         margin-top: 8px;

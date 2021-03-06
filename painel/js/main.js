@@ -11,18 +11,26 @@ $(function(){
     $('.menu-btn').click(function(){
         if(open){
             //menu aberto
-            $('.menu').animate({'width':'0','padding':'0'})
+            $('.menu').animate({'width':'0','padding':'0'});
             $('header,.content').animate({'left':'0','width':'100%'},function(){
                 open = false;
             });
         }else{
             //menu fechado
             $('.menu').css('display','block');
-            $('.menu').animate({'width':'300px','padding':'10px 0'})
-            $('header,.content').animate({'left':'300px','width':calcWindow+'px'},function(){
-                open = true;
-            });
+            $('.menu').animate({'width':'300px','padding':'10px 0'});
+            if(windowSize<=768){
+                $('header,.content').animate({'left':'300px'},function(){
+                    open = true;
+                });
+            }else{
+                $('header,.content').animate({'left':'300px'},function(){
+                    $('header,.content').css('width',calcWindow);
+                    open = true;
+                });
+            }
         }
+        
     });
 
 
