@@ -132,7 +132,7 @@ header{
 }
 
 .menu-wrapper{
-    width: 300px;
+    width: 100%;
 }
 
 aside.menu{
@@ -302,7 +302,7 @@ aside.menu{
 }
 
 @media screen and (max-width: 400px){
-    .menu-wraper{
+    .menu{
         width: 200px;
     }
 }
