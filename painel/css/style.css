@@ -9,6 +9,39 @@ html,body{
     height: 100%;
     background: rgb(230, 230, 230);
 }
+
+body{
+    overflow-x: hidden;
+}
+
+.w100{
+    width: 100% !important;
+}
+
+.w50{
+    width: 49% !important;
+}
+
+.left{
+    float: left !important;
+}
+
+.right{
+    float: right !important;
+}
+
+.blue{
+    background: #1e42a5;
+}
+
+.red{
+    background: #882020;
+}
+
+.green{
+    background: green;
+}
+
 /*ESTILIZANDO PAGINA DE LOGIN*/
 
 .box-login{
@@ -94,7 +127,12 @@ header{
     width: calc(100% - 300px);
     padding: 10px 0;
     background: #78909c;
-    float: left;
+    position: relative;
+    left: 300px;
+}
+
+.menu-wrapper{
+    width: 100%;
 }
 
 aside.menu{
@@ -103,6 +141,62 @@ aside.menu{
     height: 100%;
     background: #455a64;
     overflow-y: auto;
+    overflow-x: hidden;
+    padding: 10px 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+}
+
+.box-usuario{
+    text-align: center;
+}
+
+.box-usuario .avatar-usuario{
+    text-align: left;
+    width: 130px;
+    height: 130px;
+    border-radius: 50%;
+    display: inline-block;
+    border: 3px solid #2f3d42;
+}
+
+.imagem-usuario{
+    width: 130px;
+    height: 130px;
+    display: inline-block;
+    border: 3px solid #2f3d42;
+    position: relative;
+    border-radius: 50%;
+}
+
+.imagem-usuario img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.box-usuario .avatar-usuario i{
+    font-size: 50px;
+    color: #2f3d42;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    -ms-transform: translate(-50%,-50%);
+}
+
+.nome-usuario{
+    text-align: center;
+    margin-top: 10px;
+}
+
+.nome-usuario p{
+    font-size: 16px;
+    color: white;
 }
 
 .logout{
@@ -111,5 +205,139 @@ aside.menu{
 
 .logout a{
     color: white;
-    font-size: 20px;
+    font-size: 23px;
+    text-decoration: none;
+    padding-left: 8px;
+}
+
+.logout a span{
+    font-size: 16px;
+    padding-left: 8px;
+}
+
+.menu-btn{
+    float: left;
+    cursor: pointer;
+    font-size: 23px;
+    color: white;
+}
+
+/*Conteudo principal*/
+
+.content{
+    width: calc(100% - 300px);
+    position: relative;
+    left: 300px;
+    padding: 10px;
+}
+
+.box-content{
+    background: white;
+    padding: 10px;
+    margin-bottom: 25px;
+}
+
+.items-menu{
+    margin-top: 30px;
+}
+
+.items-menu h2{
+    text-align: left;
+    font-weight: normal;
+    font-size: 16px;
+    background: #2f3042;
+    color: white;
+    padding: 8px;
+}
+
+.items-menu a{
+    display: block;
+    padding: 8px;
+    font-weight: 300;
+    font-size: 14px;
+    text-decoration: none;
+    color: white;
+    border-bottom: 2px solid #2f3042;
+}
+
+.box-metricas{
+    margin-top: 20px;
+    text-align: center;
+}
+
+.box-metrica-single{
+    display: inline-block;
+    width: calc(98% / 3);
+    padding: 25px;
+    text-align: left;
+}
+
+.box-metrica-wraper h2,.box-metrica-wraper p{
+    font-size: 19px;
+    font-weight: bold;
+    color: white;
+}
+
+
+/*Tabela Responsiva*/
+
+.tabela-resp{
+    max-width: 98%;
+    margin: 20px auto;
+}
+
+/*primeiro item deste tipo*/
+.tabela-resp .row:nth-of-type(1){
+    font-weight: bold;
+    background: #1de9b6;
+    color: white;
+    border: 0;
+}
+
+.tabela-resp .row{
+    color: #2f3042;
+    padding: 8px 0;
+    border-bottom: 1px solid #78909c;
+    text-align: center;
+}
+
+.tabela-resp .row span{
+    padding-left: 12px;
+}
+
+.col{
+    float: left;
+    width: 50%;
+}
+
+/*Media Querys*/
+
+@media screen and (max-width: 978px){
+    .box-metrica-single{
+        width: 100%;
+        margin-top: 8px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .menu{
+        display: none;
+        padding: 0;
+    }
+
+    .content{
+        width: 100%;
+        left: 0;
+    }
+
+    header{
+        width: 100%;
+        left: 0;
+    }
+}
+
+@media screen and (max-width: 400px){
+    .menu{
+        width: 200px;
+    }
 }
