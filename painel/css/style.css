@@ -282,8 +282,27 @@ aside.menu{
 /*Tabela Responsiva*/
 
 .tabela-resp{
-    max-width: 70%;
+    max-width: 98%;
     margin: 20px auto;
+}
+
+/*primeiro item deste tipo*/
+.tabela-resp .row:nth-of-type(1){
+    font-weight: bold;
+    background: #1de9b6;
+    color: white;
+    border: 0;
+}
+
+.tabela-resp .row{
+    color: #2f3042;
+    padding: 8px 0;
+    border-bottom: 1px solid #78909c;
+    text-align: center;
+}
+
+.tabela-resp .row span{
+    padding-left: 12px;
 }
 
 .col{
