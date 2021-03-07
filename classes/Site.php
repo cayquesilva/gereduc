@@ -27,5 +27,14 @@
                 $sql->execute(array($ip,$horarioAtual,$token));
             }
         }
+
+        public static function contadorVisita(){
+            if(!isset($_COOKIE['visita'])){
+                //função para criar cookie. propria do php expirando depois de 7 dias
+                setcookie('visita','true',time() + (60*60*24*7));
+                $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.visitas` VALUES (null,?,?)");
+                $sql->execute(array($_SERVER['REMOTE_ADDR'],date('Y-m-d')));
+            }
+        }
     }
 ?>

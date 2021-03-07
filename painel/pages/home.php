@@ -1,5 +1,7 @@
 <?php 
     $usuariosOnline = Painel::listarUsuariosOnline();
+    $visitasTotais = Painel::pegaVisitaTotal();
+    $visitasHoje = Painel::pegaVisitaHoje();
 ?>
 <div class="box-content w100">
     <h2><i class="fa fa-home"></i> Painel de Controle - <?php echo NOME_EMPRESA;?></h2>
@@ -13,13 +15,13 @@
         <div class="box-metrica-single blue">
             <div class="box-metrica-wraper">
                 <h2>Total de visitas</h2>
-                <p>100</p>
+                <p><?php echo $visitasTotais ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
         <div class="box-metrica-single green">
             <div class="box-metrica-wraper">
                 <h2>Visitas hoje</h2>
-                <p>3</p>
+                <p><?php echo $visitasHoje ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
         <div class="clear"></div>

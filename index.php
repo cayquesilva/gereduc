@@ -1,5 +1,6 @@
 <?php include('config.php')?>
 <?php Site::updateUsuarioOnline();?>
+<?php Site::contadorVisita();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

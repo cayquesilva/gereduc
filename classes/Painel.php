@@ -40,6 +40,17 @@ class Painel{
         $sql = MySql::conectar()->exec("DELETE FROM `tb_admin.online` WHERE ultimo_acesso < '$date' - INTERVAL 1 MINUTE");
     }
 
+    public static function pegaVisitaTotal(){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.visitas`");
+        $sql->execute();
+        return $sql->rowCount();
+    }
+
+    public static function pegaVisitaHoje(){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.visitas` WHERE dia = ?");
+        $sql->execute(array(date('Y-m-d')));
+        return $sql->rowCount();
+    }
 }
 
 

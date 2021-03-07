@@ -58,7 +58,7 @@
                 <i class="fa fa-bars"></i>
             </div><!--menu-btn-->
             <div class="logout">
-                <a href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Página Inicial</span></a>
+                <a href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Início</span></a>
                 <a href="<?php echo INCLUDE_PATH_PAINEL ?>?logout"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a>
             </div><!--logout-->
             <div class="clear"></div>
