@@ -11,6 +11,7 @@
     //melhorando caminho de pastas
     define('INCLUDE_PATH','http://localhost/projects/gereduc/');
     define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
+    define('BASE_DIR_PAINEL',__DIR__.'/painel');
     //conecção com bd
     define('HOST','localhost');
     define('USER','root');
