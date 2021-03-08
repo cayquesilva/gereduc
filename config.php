@@ -34,4 +34,23 @@
             echo 'class="menu-active"';
         }
     }
+
+    function verificaPermissaoMenu($permissao){
+        //verifica se aquela permissão é compativel com o meu cargo
+        if($_SESSION['cargo'] >= $permissao){
+            return;
+        }else{
+            //aplica display none no menu que não pode aparecer para o usuario
+            echo 'style="display:none;"';
+        }
+    }
+
+    function verificaPermissaoPagina($permissao){
+        if($_SESSION['cargo'] >= $permissao){
+            return;
+        }else{
+            include('painel/pages/permissao-negada.php');
+            die();
+        }
+    }
 ?>

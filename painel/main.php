@@ -37,16 +37,16 @@
         </div><!--box-usuario-->
         <div class="items-menu">
             <h2>Cadastro</h2>
-            <a <?php selecionadoMenu('cadastrar-noticia'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
-            <a <?php selecionadoMenu('cadastrar-servico'); ?> href="">Cadastrar Curso</a>
-            <a <?php selecionadoMenu('cadastrar-slide'); ?> href="">Cadastrar Slide</a>
+            <a <?php selecionadoMenu('cadastrar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
+            <a <?php selecionadoMenu('cadastrar-curso'); verificaPermissaoMenu(1);?> href="">Cadastrar Curso</a>
+            <a <?php selecionadoMenu('cadastrar-slide'); verificaPermissaoMenu(1);?> href="">Cadastrar Slide</a>
             <h2>Gestão</h2>
-            <a <?php selecionadoMenu('listar-noticia'); ?> href="">Listar Notícias</a>
-            <a <?php selecionadoMenu('listar-servico'); ?> href="">Listar Cursos</a>
-            <a <?php selecionadoMenu('listar-slide'); ?> href="">Listar Slides</a>
+            <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="">Listar Notícias</a>
+            <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="">Listar Cursos</a>
+            <a <?php selecionadoMenu('listar-slide'); verificaPermissaoMenu(1);?> href="">Listar Slides</a>
             <h2>Administração do Painel</h2>
-            <a <?php selecionadoMenu('editar-usuario'); ?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
-            <a <?php selecionadoMenu('adicionar-usuario'); ?> href="">Adicionar Usuários</a>
+            <a <?php selecionadoMenu('editar-usuario'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
+            <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Adicionar Usuários</a>
             <h2>Configuração Geral</h2>
             <a <?php selecionadoMenu('editar-site'); ?> href="">Editar Site</a>
         </div><!--items-menu-->
