@@ -364,6 +364,18 @@ aside.menu{
 
 }
 
+.menu-active{
+    background: #3a4b51;
+}
+/*Quando tem a classe menu-active, 
+adiciona esse conteudo dinamicamente, antes da string*/
+.menu-active::before{
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    padding-right: 8px;
+    content: "\f101";
+}
+
 /*Media Querys*/
 
 @media screen and (max-width: 978px){

@@ -26,4 +26,12 @@
             '2'=> 'Administrador'];
         return $arr[$cargo];    
     }
+
+    function selecionadoMenu($par){
+        //pega a url, se for a url certa coloca menu active na classe da div.
+        $url = explode('/',@$_GET['url'])[0];
+        if($url == $par){
+            echo 'class="menu-active"';
+        }
+    }
 ?>
