@@ -37,18 +37,18 @@
         </div><!--box-usuario-->
         <div class="items-menu">
             <h2>Cadastro</h2>
-            <a href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
-            <a href="">Cadastrar Curso</a>
-            <a href="">Cadastrar Slide</a>
+            <a <?php selecionadoMenu('cadastrar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
+            <a <?php selecionadoMenu('cadastrar-curso'); verificaPermissaoMenu(1);?> href="">Cadastrar Curso</a>
+            <a <?php selecionadoMenu('cadastrar-slide'); verificaPermissaoMenu(1);?> href="">Cadastrar Slide</a>
             <h2>Gestão</h2>
-            <a href="">Listar Notícias</a>
-            <a href="">Listar Cursos</a>
-            <a href="">Listar Slides</a>
+            <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="">Listar Notícias</a>
+            <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="">Listar Cursos</a>
+            <a <?php selecionadoMenu('listar-slide'); verificaPermissaoMenu(1);?> href="">Listar Slides</a>
             <h2>Administração do Painel</h2>
-            <a href="">Editar Usuário</a>
-            <a href="">Adicionar Usuários</a>
+            <a <?php selecionadoMenu('editar-usuario'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
+            <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Adicionar Usuários</a>
             <h2>Configuração Geral</h2>
-            <a href="">Editar</a>
+            <a <?php selecionadoMenu('editar-site'); ?> href="">Editar Site</a>
         </div><!--items-menu-->
     </div><!--menu-wrapper-->
 </aside><!--menu-->
