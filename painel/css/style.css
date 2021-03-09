@@ -331,12 +331,8 @@ aside.menu{
 }
 
 .box-content form input[type=text],
-<<<<<<< HEAD
 .box-content form input[type=password],
 .box-content form select{
-=======
-.box-content form input[type=password]{
->>>>>>> 1a85f4a7bfec9712683bf3383a2ee0e122c9839e
     font-size: 16px;
     font-weight: normal;
     color: black;
@@ -355,11 +351,8 @@ aside.menu{
     margin-top: 8px;
 }
 
-<<<<<<< HEAD
 
 
-=======
->>>>>>> 1a85f4a7bfec9712683bf3383a2ee0e122c9839e
 .box-alerta{
     width: 100%;
     height: 40px;
