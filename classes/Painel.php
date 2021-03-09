@@ -1,6 +1,12 @@
 <?php
 
 class Painel{
+
+    public static  $cargos = [
+        '0'=> 'Normal',
+        '1'=> 'Sub Administrador',
+        '2'=> 'Administrador'];
+
     public static function logado(){
         // se existir session login retorna verdadeiro se n falso
         return isset($_SESSION['login']) ? true : false;
@@ -88,6 +94,41 @@ class Painel{
     public static function deleteFile($file){
         //deleta o arquivo passado como argumento e não mostra erro se der falha por causa do '@'
         @unlink('uploads/'.$file);
+    }
+
+    public static function verificarCampos($user,$senha,$nome,$cargo){
+        if($nome == ''){
+            Painel::alerta('erro','O Nome está vazio!');
+            return false;
+        }else if($user == ''){
+            Painel::alerta('erro','O Usuário está vazio!');
+            return false;
+        }else if($senha == ''){
+            Painel::alerta('erro','A Senha está vazia!');
+            return false;
+        }else if($cargo == ''){
+            Painel::alerta('erro','O Cargo não foi selecionado!');
+            return false;
+        }else{
+            if($cargo >= $_SESSION['cargo']){
+                Painel::alerta('erro','Você precisa selecionar um cargo menor que o seu!');
+                return false;
+            }else{
+                return true;
+            }
+        }
+    }
+
+    public static function userExists($usuario){
+        //se o usuario existe
+        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios` WHERE user = ?");
+        $sql->execute(array($usuario));
+        if($sql->rowCount() > 0){
+            Painel::alerta('erro','O usuário já existe!');
+            return true;
+        }else{
+            return false;
+        }        
     }
 }
 ?>

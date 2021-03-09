@@ -9,5 +9,17 @@
                 return false;
             }
         }
+<<<<<<< HEAD
+
+        public function criarUsuario($user,$senha,$imagem,$nome,$cargo){
+            $sql = MySql::conectar()->prepare("INSERT INTO `tb_admin.usuarios` VALUES(?,?,?,?,?,?)");
+            if($sql->execute(array(null,$user,$senha,$imagem,$nome,$cargo))){
+                return true;
+            }else{
+                return false;
+            }
+        }
+=======
+>>>>>>> 1a85f4a7bfec9712683bf3383a2ee0e122c9839e
     }
 ?>

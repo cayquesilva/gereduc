@@ -331,7 +331,8 @@ aside.menu{
 }
 
 .box-content form input[type=text],
-.box-content form input[type=password]{
+.box-content form input[type=password],
+.box-content form select{
     font-size: 16px;
     font-weight: normal;
     color: black;
@@ -349,6 +350,8 @@ aside.menu{
     padding: 8px;
     margin-top: 8px;
 }
+
+
 
 .box-alerta{
     width: 100%;
