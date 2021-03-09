@@ -51,7 +51,43 @@ class Painel{
         $sql->execute(array(date('Y-m-d')));
         return $sql->rowCount();
     }
+
+    public static function alerta($tipo,$mensagem){
+        if($tipo == 'sucesso'){
+            echo '<div class="box-alerta sucesso"><i class="fa fa-check"></i> '.$mensagem.'</div>';
+        }else if($tipo == 'erro'){
+            echo '<div class="box-alerta erro"><i class="fa fa-times"></i> '.$mensagem.'</div>';
+        }
+    }
+
+    public static function imagemValida($imagem){
+        //testa tipos de imagens permitido
+        if($imagem['type'] == 'image/jpg' ||
+            $imagem['type'] == 'image/jpeg' ||
+            $imagem['type'] == 'image/png'){
+            //pega tamanho da imagem e converte em kb e mostra somente o inteiro
+            //double = 12.5 intval() = 12
+            $tamanho = intval($imagem['size']/1024);
+            if($tamanho < 300)
+                return true;
+            else
+                return true;
+        }else{
+            return false;
+        }
+    }
+
+    public static function uploadFile($file){
+        //pega o arquivo e coloca na pasta correta.
+        if(move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$file['name']))
+            return $file['name'];
+        else
+            return false;
+        }
+
+    public static function deleteFile($file){
+        //deleta o arquivo passado como argumento e não mostra erro se der falha por causa do '@'
+        @unlink('uploads/'.$file);
+    }
 }
-
-
 ?>
