@@ -379,6 +379,18 @@ adiciona esse conteudo dinamicamente, antes da string*/
     content: "\f101";
 }
 
+form .form-group-login:nth-last-of-type(2){
+    position: relative;
+    top: 15px;
+}
+
+.form-group-login label{
+    font-size: 13px;
+    font-weight: 300;
+    color: #455a64;
+    padding-right: 10px;
+}
+
 /*Media Querys*/
 
 @media screen and (max-width: 978px){

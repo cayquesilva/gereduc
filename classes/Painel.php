@@ -15,6 +15,8 @@ class Painel{
     public static function logout(){
         //unset deleta a sessão
         //unset($_SESSION['']);
+        //setcookie negativo deleta o cookie
+        setcookie('lembrar',true,time()-1,'/');
         session_destroy();
         header('Location: '.INCLUDE_PATH_PAINEL);
     }
