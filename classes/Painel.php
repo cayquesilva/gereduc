@@ -173,5 +173,11 @@ class Painel{
         }
         return $certo;
     }
+
+    public static function selectAll($tabela){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela`");
+        $sql->execute();
+        return $sql->fetchAll();
+    }
 }
 ?>
