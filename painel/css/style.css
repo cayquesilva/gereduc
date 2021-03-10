@@ -105,6 +105,7 @@ body{
     font-weight: bolder;
 }
 
+
 .erro-box{
     width: 100%;
     padding: 8px 2%;
@@ -342,6 +343,19 @@ aside.menu{
     margin-top: 8px;
     border: 1px solid #455a64;
 }
+
+.box-content form textarea{
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+    width: 100%;
+    height: 150px;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #455a64;
+    resize: vertical;
+}
+
 
 .box-content form input[type=file]{
     border: 1px solid #455a64;

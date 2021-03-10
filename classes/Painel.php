@@ -142,5 +142,36 @@ class Painel{
             return false;
         }        
     }
+
+    public static function insert($arr){
+        //$arr pega o post como um todo (todos os valores do form)
+        $certo = true;
+        $nome_tabela = $arr['nome_tabela'];
+        $query = "INSERT INTO `$nome_tabela` VALUES (null";
+        foreach ($arr as $key => $value) {
+            $nome = $key;
+            $valor = $value;
+            if($nome == 'acao' || $nome == 'nome_tabela')
+                //se for o post acao ou post nome_tabela ignora e volta o foreach
+                continue;
+            if($value == ''){
+                //se tiver algo em branco, quebra e da erro
+                $certo = false;
+                break;
+            }
+            //concatena a cada interação pra adicioar dinamicamente os campos do db
+            $query.=",?";
+            //adiciona cada iteração do $value no array criado
+            $parametros[] = $value;
+        }
+        //concatenando
+        $query.=")";
+        if($certo){
+            $sql = MySql::conectar()->prepare($query);
+            //usa o array criado para substituir as "?"
+            $sql->execute($parametros);
+        }
+        return $certo;
+    }
 }
 ?>
