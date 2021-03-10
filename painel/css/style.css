@@ -409,4 +409,8 @@ adiciona esse conteudo dinamicamente, antes da string*/
     .menu{
         width: 200px;
     }
+
+    .w50{
+        width: 100%;
+    }
 }

@@ -41,6 +41,12 @@ class Painel{
         return $sql->fetchAll();
     }
 
+    public static function listarUsuariosPainel(){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios`");
+        $sql->execute();
+        return $sql->fetchAll();
+    }
+
     public static function limparUsuariosOnline(){
         $date = date('Y-m-d H:i:s');
         $sql = MySql::conectar()->exec("DELETE FROM `tb_admin.online` WHERE ultimo_acesso < '$date' - INTERVAL 1 MINUTE");
