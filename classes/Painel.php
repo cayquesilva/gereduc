@@ -84,9 +84,13 @@ class Painel{
     }
 
     public static function uploadFile($file){
+        //usa explode pra dividir o nome do arquivo em partes divididas pelo '.'
+        $formatoArquivo = explode('.',$file['name']);
+        //PEga a idunica e adiciona o formato do arquivo $formatoArquivo[ultima parte].
+        $imagemNome = uniqid().'.'.$formatoArquivo[count($formatoArquivo)-1];
         //pega o arquivo e coloca na pasta correta.
-        if(move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$file['name']))
-            return $file['name'];
+        if(move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$imagemNome))
+            return $imagemNome;
         else
             return false;
         }
@@ -121,9 +125,9 @@ class Painel{
 
     public static function userExists($usuario){
         //se o usuario existe
-        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios` WHERE user = ?");
+        $sql = MySql::conectar()->prepare("SELECT `id` FROM `tb_admin.usuarios` WHERE user = ?");
         $sql->execute(array($usuario));
-        if($sql->rowCount() > 0){
+        if($sql->rowCount() == 1){
             Painel::alerta('erro','O usuário já existe!');
             return true;
         }else{
