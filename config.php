@@ -21,7 +21,7 @@
     //Funções
     
     function pegaCargo($indice){
-        return Painel::$cargos[$indice];    
+        return Painel::$cargos[$indice];
     }
 
     function selecionadoMenu($par){

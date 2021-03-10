@@ -15,6 +15,8 @@ class Painel{
     public static function logout(){
         //unset deleta a sessão
         //unset($_SESSION['']);
+        //setcookie negativo deleta o cookie
+        setcookie('lembrar',true,time()-1,'/');
         session_destroy();
         header('Location: '.INCLUDE_PATH_PAINEL);
     }
@@ -38,6 +40,12 @@ class Painel{
         $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.online`");
         $sql->execute();
         //pega todos os valores do select *
+        return $sql->fetchAll();
+    }
+
+    public static function listarUsuariosPainel(){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios`");
+        $sql->execute();
         return $sql->fetchAll();
     }
 
@@ -84,9 +92,13 @@ class Painel{
     }
 
     public static function uploadFile($file){
+        //usa explode pra dividir o nome do arquivo em partes divididas pelo '.'
+        $formatoArquivo = explode('.',$file['name']);
+        //PEga a idunica e adiciona o formato do arquivo $formatoArquivo[ultima parte].
+        $imagemNome = uniqid().'.'.$formatoArquivo[count($formatoArquivo)-1];
         //pega o arquivo e coloca na pasta correta.
-        if(move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$file['name']))
-            return $file['name'];
+        if(move_uploaded_file($file['tmp_name'],BASE_DIR_PAINEL.'/uploads/'.$imagemNome))
+            return $imagemNome;
         else
             return false;
         }
@@ -121,14 +133,51 @@ class Painel{
 
     public static function userExists($usuario){
         //se o usuario existe
-        $sql = MySql::conectar()->prepare("SELECT * FROM `tb_admin.usuarios` WHERE user = ?");
+        $sql = MySql::conectar()->prepare("SELECT `id` FROM `tb_admin.usuarios` WHERE user = ?");
         $sql->execute(array($usuario));
-        if($sql->rowCount() > 0){
+        if($sql->rowCount() == 1){
             Painel::alerta('erro','O usuário já existe!');
             return true;
         }else{
             return false;
         }        
+    }
+
+    public static function insert($arr){
+        //$arr pega o post como um todo (todos os valores do form)
+        $certo = true;
+        $nome_tabela = $arr['nome_tabela'];
+        $query = "INSERT INTO `$nome_tabela` VALUES (null";
+        foreach ($arr as $key => $value) {
+            $nome = $key;
+            $valor = $value;
+            if($nome == 'acao' || $nome == 'nome_tabela')
+                //se for o post acao ou post nome_tabela ignora e volta o foreach
+                continue;
+            if($value == ''){
+                //se tiver algo em branco, quebra e da erro
+                $certo = false;
+                break;
+            }
+            //concatena a cada interação pra adicioar dinamicamente os campos do db
+            $query.=",?";
+            //adiciona cada iteração do $value no array criado
+            $parametros[] = $value;
+        }
+        //concatenando
+        $query.=")";
+        if($certo){
+            $sql = MySql::conectar()->prepare($query);
+            //usa o array criado para substituir as "?"
+            $sql->execute($parametros);
+        }
+        return $certo;
+    }
+
+    public static function selectAll($tabela){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela`");
+        $sql->execute();
+        return $sql->fetchAll();
     }
 }
 ?>

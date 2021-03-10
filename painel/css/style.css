@@ -105,6 +105,7 @@ body{
     font-weight: bolder;
 }
 
+
 .erro-box{
     width: 100%;
     padding: 8px 2%;
@@ -343,6 +344,19 @@ aside.menu{
     border: 1px solid #455a64;
 }
 
+.box-content form textarea{
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+    width: 100%;
+    height: 150px;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #455a64;
+    resize: vertical;
+}
+
+
 .box-content form input[type=file]{
     border: 1px solid #455a64;
     width: 100%;
@@ -351,7 +365,47 @@ aside.menu{
     margin-top: 8px;
 }
 
+/*tabelas*/
 
+table{
+    width: 100%;
+    margin: 20px 0;
+    border-collapse: collapse;
+    text-align: center;
+}
+
+table tr:nth-of-type(1){
+    background: #1de9b6;
+    color: white;
+    font-weight: bold;
+    border: 0;
+}
+
+table td{
+    padding: 8px 0;
+}
+
+table tr{
+    border-bottom: 1px solid #78909c;
+    color: #2f3042;
+}
+
+table a.btn{
+    text-decoration: none;
+    padding: 6px 4px;
+    color: white;
+    display: inline-block;
+    font-size: 13px;
+    font-weight: bold;
+}
+
+table a.btn.edit{
+    background: #f4b03e;
+}
+
+table a.btn.del{
+    background: #f75353;
+}
 
 .box-alerta{
     width: 100%;
@@ -377,6 +431,18 @@ adiciona esse conteudo dinamicamente, antes da string*/
     font-weight: 900;
     padding-right: 8px;
     content: "\f101";
+}
+
+form .form-group-login:nth-last-of-type(2){
+    position: relative;
+    top: 15px;
+}
+
+.form-group-login label{
+    font-size: 13px;
+    font-weight: 300;
+    color: #455a64;
+    padding-right: 10px;
 }
 
 /*Media Querys*/
@@ -408,5 +474,9 @@ adiciona esse conteudo dinamicamente, antes da string*/
 @media screen and (max-width: 400px){
     .menu{
         width: 200px;
+    }
+
+    .w50{
+        width: 100%;
     }
 }

@@ -41,7 +41,7 @@
             <a <?php selecionadoMenu('cadastrar-curso'); verificaPermissaoMenu(1);?> href="">Cadastrar Curso</a>
             <a <?php selecionadoMenu('cadastrar-slide'); verificaPermissaoMenu(1);?> href="">Cadastrar Slide</a>
             <h2>Gestão</h2>
-            <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="">Listar Notícias</a>
+            <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-noticia">Listar Notícias</a>
             <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="">Listar Cursos</a>
             <a <?php selecionadoMenu('listar-slide'); verificaPermissaoMenu(1);?> href="">Listar Slides</a>
             <h2>Administração do Painel</h2>
@@ -58,7 +58,9 @@
                 <i class="fa fa-bars"></i>
             </div><!--menu-btn-->
             <div class="logout">
-                <a href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Início</span></a>
+                <a <?php /*@ não retorna erro caso não tenha get*/if(@$_GET['url'] == ''){?>style="background: #60727a; padding: 10px 20px;"<?php };
+                    selecionadoMenu('');?> href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Início</span>
+                </a>
                 <a href="<?php echo INCLUDE_PATH_PAINEL ?>?logout"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a>
             </div><!--logout-->
             <div class="clear"></div>
