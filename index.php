@@ -35,7 +35,7 @@ $url = isset($_GET['url']) ? $_GET['url'] : 'home';
                         <ul>
                             <li><a href="<?php echo INCLUDE_PATH;?>cursos">Cursos</a></li>
                             <li><a href="<?php echo INCLUDE_PATH;?>noticias">Noticias</a></li>
-                            <li><a realtime="contato" href="<?php echo INCLUDE_PATH;?>">Contato</a></li>
+                            <li><a realtime="contato" href="<?php echo INCLUDE_PATH;?>contato">Contato</a></li>
                             <li><a href="<?php echo INCLUDE_PATH_PAINEL;?>">Painel de Controle</a></li>
                         </ul>
                     </nav><!--nav-menu-->

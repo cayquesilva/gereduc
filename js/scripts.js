@@ -11,6 +11,8 @@ $(function(){
        $('[realtime]').click(function(){
            var pagina = $(this).attr('realtime');
            $('.container-principal').html('').load('/projects/gereduc/pages/'+pagina+'.php');
+           //adicionar nome da pagina na url. 
+           window.history.pushState('','',pagina);
            return false;
        })
    } 
