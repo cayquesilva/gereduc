@@ -195,6 +195,54 @@ class Painel{
         $sql->execute();
     }
 
+    public static function selectNoticia($tabela,$id){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE id = ?");
+        $sql->execute(array($id));
+        return $sql->fetch();
+    }
+
+    public static function editarNoticia($arr){
+            //$arr pega o post como um todo (todos os valores do form)
+            $certo = true;
+            $primeiraInt = true;
+            $nome_tabela = $arr['nome_tabela'];
+            $query = "UPDATE `$nome_tabela` SET ";
+            foreach ($arr as $key => $value) {
+                $nome = $key;
+                $valor = $value;
+                if($nome == 'acao' || $nome == 'nome_tabela' || $nome =='id')
+                    //se for o post acao ou post nome_tabela ignora e volta o foreach
+                    continue;
+                if($value == ''){
+                    //se tiver algo em branco, quebra e da erro
+                    $certo = false;
+                    break;
+                }
+                if($primeiraInt){
+                //concatena a cada interação pra adicioar dinamicamente os campos do db
+                    $query.="$nome=?";
+                    $primeiraInt=false;
+                }else{
+                //concatena a cada interação pra adicioar dinamicamente os campos do db
+                    $query.=", $nome=?";
+                }
+                //adiciona cada iteração do $value no array criado
+                $parametros[] = $value;
+            }
+            //concatenando
+            if($certo){
+                $sql = MySql::conectar()->prepare($query." WHERE id = ?");
+                //usa o array criado para substituir as "?"
+                $parametros[] = $arr['id'];
+                $sql->execute($parametros);
+            }
+            return $certo;
+    }
+
+    public static function ordItem($tabela,$idItemAtual,$idItem){
+        
+    }
+
     public static function redirecionar($url){
         echo '<script>location.href="'.$url.'"</script>';
         die();

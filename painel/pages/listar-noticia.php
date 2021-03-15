@@ -21,6 +21,8 @@
             <td>Notícia</td>
             <td>Editar</td>
             <td>Deletar</td>
+            <td>Ord. Cres.</td>
+            <td>Ord. Decr.</td>
         </tr>
         <?php
             foreach ($noticias as $key => $value) {
@@ -28,8 +30,10 @@
         <tr>
             <td><?php echo $value['titulo']; ?></td>
             <td><?php echo $value['noticia']; ?></td>
-            <td><a class="btn edit" href=""><i class=" fa fa-pen"></i> Editar</a></td>
-            <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?excluir=<?php echo $value['id'];?>"><i class=" fa fa-times"></i> Excluir</a></td>
+            <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-noticia?id=<?php echo $value['id'];?>"><i class=" fa fa-pen"></i></a></td>
+            <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?excluir=<?php echo $value['id'];?>"><i class=" fa fa-times"></i></a></td>
+            <td><a actionBtn="ordUp" class="btn order" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?ordenar=<?php echo $value['id'];?>"><i class="fas fa-sort-up"></i></a></td>
+            <td><a actionBtn="ordDown" class="btn order" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?ordenar=<?php echo $value['id'];?>"><i class="fas fa-sort-down"></i></a></td>
         </tr>
         <?php } ?>
     </table>

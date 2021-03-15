@@ -393,7 +393,7 @@ table tr{
 
 table a.btn{
     text-decoration: none;
-    padding: 6px 4px;
+    padding: 6px 12px;
     color: white;
     display: inline-block;
     font-size: 13px;
@@ -410,6 +410,10 @@ table a.btn.edit{
 
 table a.btn.del{
     background: #f75353;
+}
+
+table a.btn.order{
+    background: #225c9e;
 }
 
 /*Paginação*/
