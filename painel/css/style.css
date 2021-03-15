@@ -369,6 +369,7 @@ aside.menu{
 
 table{
     width: 100%;
+    min-width: 900px;
     margin: 20px 0;
     border-collapse: collapse;
     text-align: center;
@@ -399,12 +400,38 @@ table a.btn{
     font-weight: bold;
 }
 
+.wraper-table{
+    overflow-x: auto;
+}
+
 table a.btn.edit{
     background: #f4b03e;
 }
 
 table a.btn.del{
     background: #f75353;
+}
+
+/*Paginação*/
+
+.paginacao{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.paginacao a{
+    font-size: 14px;
+    margin: 0 8px;
+    display: inline-block;
+    padding: 3px 4px;
+    border: 1px solid #ccc;
+    text-decoration: none;
+    color: #2f3042;
+    border-radius: 2px;
+}
+
+.paginacao a.pagina-selecionada{
+    background: rgb(220,220,220);
 }
 
 .box-alerta{

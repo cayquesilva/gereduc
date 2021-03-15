@@ -174,8 +174,14 @@ class Painel{
         return $certo;
     }
 
-    public static function selectAll($tabela){
-        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela`");
+    public static function selectAll($tabela,$start=null,$end=null){
+        //se não for passado o start e o end, pega tudo
+        if($start == null && $end == null){
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id DESC");
+        }else{
+            //se tiver start e end pega limitado ao start e ao end
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id DESC LIMIT $start , $end");
+        }
         $sql->execute();
         return $sql->fetchAll();
     }
