@@ -20,6 +20,7 @@
         <textarea name="noticia"></textarea>
     </div><!--form-group-->
     <div class=form-group>
+        <input type="hidden" name="id_ordem" value="0">
         <input type="hidden" name="nome_tabela" value="tb_site.noticia">
         <input type="submit" name="acao" value="Cadastrar" >
     </div><!--form-group-->

@@ -10,9 +10,19 @@
         </div><!--main-conteudo-->
     </div><!--container-->
 </section><!--main-->
+<section class="noticias" id="noticias">
+<?php
+    $sql = MySql::conectar()->prepare("SELECT * FROM `tb_site.noticia` ORDER BY id_ordem ASC LIMIT 4");
+    $sql->execute();
+    $noticias = $sql->fetchAll();
+    foreach ($noticias as $key => $value) {
+?>
+<div class="noticia-single">
+    <h1><?php echo $value['titulo'];?></h1>
+    <p><?php echo $value['noticia'];?></p>
+</div><!--noticia-single-->
+<?php }?> 
+</section>
 <section class="cursos" id="cursos">
     cursos
-</section>
-<section class="noticias" id="noticias">
-    noticias
 </section>

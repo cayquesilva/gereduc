@@ -170,6 +170,9 @@ class Painel{
             $sql = MySql::conectar()->prepare($query);
             //usa o array criado para substituir as "?"
             $sql->execute($parametros);
+            $lastId = MySql::conectar()->lastInsertId();
+            $sql = MySql::conectar()->prepare("UPDATE `$nome_tabela` SET id_ordem = ? WHERE id = $lastId");
+            $sql->execute(array($lastId));
         }
         return $certo;
     }
@@ -177,10 +180,10 @@ class Painel{
     public static function selectAll($tabela,$start=null,$end=null){
         //se não for passado o start e o end, pega tudo
         if($start == null && $end == null){
-            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id DESC");
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id_ordem ASC");
         }else{
             //se tiver start e end pega limitado ao start e ao end
-            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id DESC LIMIT $start , $end");
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id_ordem ASC LIMIT $start , $end");
         }
         $sql->execute();
         return $sql->fetchAll();
@@ -239,8 +242,28 @@ class Painel{
             return $certo;
     }
 
-    public static function ordItem($tabela,$idItemAtual,$idItem){
-        
+    public static function orderItem($tabela,$orderType,$idItem){
+        if($orderType == 'up'){
+            $infoItemAtual = Painel::selectNoticia($tabela,$idItem);
+            $order_id = $infoItemAtual['id_ordem'];  
+            $itemBefore = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE id_ordem < $order_id ORDER BY id_ordem DESC LIMIT 1");
+            $itemBefore->execute();
+            if($itemBefore->rowCount() == 0)
+                return;
+            $itemBefore = $itemBefore->fetch();
+            Painel::editarNoticia(array('nome_tabela'=>$tabela,'id'=>$itemBefore['id'],'id_ordem'=>$infoItemAtual['id_ordem']));
+            Painel::editarNoticia(array('nome_tabela'=>$tabela,'id'=>$infoItemAtual['id'],'id_ordem'=>$itemBefore['id_ordem']));
+        }else if($orderType == 'down'){
+            $infoItemAtual = Painel::selectNoticia($tabela,$idItem);
+            $order_id = $infoItemAtual['id_ordem'];  
+            $itemBefore = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE id_ordem > $order_id ORDER BY id_ordem ASC LIMIT 1");
+            $itemBefore->execute();
+            if($itemBefore->rowCount() == 0)
+                return;
+            $itemBefore = $itemBefore->fetch();
+            Painel::editarNoticia(array('nome_tabela'=>$tabela,'id'=>$itemBefore['id'],'id_ordem'=>$infoItemAtual['id_ordem']));
+            Painel::editarNoticia(array('nome_tabela'=>$tabela,'id'=>$infoItemAtual['id'],'id_ordem'=>$itemBefore['id_ordem']));
+        }
     }
 
     public static function redirecionar($url){

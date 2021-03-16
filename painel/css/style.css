@@ -425,17 +425,19 @@ table a.btn.order{
 
 .paginacao a{
     font-size: 14px;
-    margin: 0 8px;
+    margin: 0 2px;
     display: inline-block;
-    padding: 3px 4px;
-    border: 1px solid #ccc;
+    padding: 3px 6px;
+    border: 1px solid #78909c;
     text-decoration: none;
-    color: #2f3042;
     border-radius: 2px;
+    color: #2f3042;
+    font-weight: bold;
 }
 
 .paginacao a.pagina-selecionada{
-    background: rgb(220,220,220);
+    background: #2f3d42;
+    color: white;
 }
 
 .box-alerta{

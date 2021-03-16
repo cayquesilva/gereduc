@@ -9,6 +9,9 @@
         $idExcluir = intVal($_GET['excluir']);
         Painel::excluirNoticia('tb_site.noticia',$idExcluir);
         Painel::redirecionar('listar-noticia');
+    }else if(isset($_GET['ordenar']) && isset($_GET['id'])){
+        Painel::orderItem('tb_site.noticia',$_GET['ordenar'],$_GET['id']);
+        Painel::redirecionar('listar-noticia');
     }
 ?>
 <div class="box-content">
@@ -32,8 +35,8 @@
             <td><?php echo $value['noticia']; ?></td>
             <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-noticia?id=<?php echo $value['id'];?>"><i class=" fa fa-pen"></i></a></td>
             <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?excluir=<?php echo $value['id'];?>"><i class=" fa fa-times"></i></a></td>
-            <td><a actionBtn="ordUp" class="btn order" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?ordenar=<?php echo $value['id'];?>"><i class="fas fa-sort-up"></i></a></td>
-            <td><a actionBtn="ordDown" class="btn order" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?ordenar=<?php echo $value['id'];?>"><i class="fas fa-sort-down"></i></a></td>
+            <td><a actionBtn="ordUp" class="btn order" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?ordenar=up&id=<?php echo $value['id'];?>"><i class="fas fa-angle-up"></i></a></td>
+            <td><a actionBtn="ordDown" class="btn order" href="<?php echo INCLUDE_PATH_PAINEL?>listar-noticia?ordenar=down&id=<?php echo $value['id'];?>"><i class="fas fa-angle-down"></i></a></td>
         </tr>
         <?php } ?>
     </table>
