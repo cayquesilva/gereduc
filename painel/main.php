@@ -38,11 +38,11 @@
         <div class="items-menu">
             <h2>Cadastro</h2>
             <a <?php selecionadoMenu('cadastrar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
-            <a <?php selecionadoMenu('cadastrar-curso'); verificaPermissaoMenu(1);?> href="">Cadastrar Curso</a>
+            <a <?php selecionadoMenu('cadastrar-curso'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-curso">Cadastrar Curso</a>
             <a <?php selecionadoMenu('cadastrar-slide'); verificaPermissaoMenu(1);?> href="">Cadastrar Slide</a>
             <h2>Gestão</h2>
             <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-noticia">Listar Notícias</a>
-            <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="">Listar Cursos</a>
+            <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-curso">Listar Cursos</a>
             <a <?php selecionadoMenu('listar-slide'); verificaPermissaoMenu(1);?> href="">Listar Slides</a>
             <h2>Administração do Painel</h2>
             <a <?php selecionadoMenu('editar-usuario'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
