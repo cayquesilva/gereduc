@@ -48,7 +48,7 @@ $(function(){
     });
 
     $('[actionBtn=deletar]').click(function(){
-        var resposta = confirm("Tem certeza que deseja excluir a notícia?");
+        var resposta = confirm("Tem certeza que deseja excluir?");
         if(resposta == true){
             return true;
         }else{

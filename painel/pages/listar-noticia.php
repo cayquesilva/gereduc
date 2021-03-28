@@ -7,7 +7,7 @@
     if(isset($_GET['excluir'])){
         //pega o valor do excluir passado no url
         $idExcluir = intVal($_GET['excluir']);
-        Painel::excluirNoticia('tb_site.noticia',$idExcluir);
+        Painel::excluirItem('tb_site.noticia',$idExcluir);
         Painel::redirecionar('listar-noticia');
     }else if(isset($_GET['ordenar']) && isset($_GET['id'])){
         Painel::orderItem('tb_site.noticia',$_GET['ordenar'],$_GET['id']);

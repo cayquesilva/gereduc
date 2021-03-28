@@ -43,7 +43,7 @@
             <h2>Gestão</h2>
             <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-noticia">Listar Notícias</a>
             <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-curso">Listar Cursos</a>
-            <a <?php selecionadoMenu('listar-slide'); verificaPermissaoMenu(1);?> href="">Listar Slides</a>
+            <a <?php selecionadoMenu('listar-slides'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-slides">Listar Slides</a>
             <h2>Administração do Painel</h2>
             <a <?php selecionadoMenu('editar-usuario'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
             <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Adicionar Usuários</a>

@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET['id'])){
         $id= (int)$_GET['id'];
-        $curso = Painel::selectNoticia('tb_site.curso',$id);
+        $curso = Painel::selectItem('tb_site.curso',$id);
     }else{
         Painel::alerta('Erro','Você precisa selecionar um curso para editar!');
         die();
@@ -13,7 +13,7 @@
     <form method=post enctype="multipart/form-data">
     <?php 
         if(isset($_POST['acao'])){
-            if(Painel::editarNoticia($_POST)){
+            if(Painel::editarItem($_POST)){
                 $curso = Painel::selectNoticia('tb_site.curso',$id);
                 Painel::alerta('sucesso','O curso foi editada com sucesso!');
             }else{

@@ -1,7 +1,7 @@
 <?php
     if(isset($_GET['id'])){
         $id= (int)$_GET['id'];
-        $noticia = Painel::selectNoticia('tb_site.noticia',$id);
+        $noticia = Painel::selectItem('tb_site.noticia',$id);
     }else{
         Painel::alerta('Erro','Você precisa selecionar uma notícia para editar!');
         die();
@@ -13,7 +13,7 @@
     <form method=post enctype="multipart/form-data">
     <?php 
         if(isset($_POST['acao'])){
-            if(Painel::editarNoticia($_POST)){
+            if(Painel::editarItem($_POST)){
                 $noticia = Painel::selectNoticia('tb_site.noticia',$id);
                 Painel::alerta('sucesso','A notícia foi editada com sucesso!');
             }else{

@@ -386,6 +386,11 @@ table td{
     padding: 8px 0;
 }
 
+table td img{
+    width: 90px;
+    height: 50px;
+}
+
 table tr{
     border-bottom: 1px solid #78909c;
     color: #2f3042;
@@ -477,6 +482,9 @@ form .form-group-login:nth-last-of-type(2){
     color: #455a64;
     padding-right: 10px;
 }
+
+
+
 
 /*Media Querys*/
 
