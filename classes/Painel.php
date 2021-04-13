@@ -170,14 +170,117 @@ class Painel{
             $sql = MySql::conectar()->prepare($query);
             //usa o array criado para substituir as "?"
             $sql->execute($parametros);
+            $lastId = MySql::conectar()->lastInsertId();
+            $sql = MySql::conectar()->prepare("UPDATE `$nome_tabela` SET id_ordem = ? WHERE id = $lastId");
+            $sql->execute(array($lastId));
         }
         return $certo;
     }
 
-    public static function selectAll($tabela){
-        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela`");
+    public static function selectAll($tabela,$start=null,$end=null){
+        //se não for passado o start e o end, pega tudo
+        if($start == null && $end == null){
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id_ordem ASC");
+        }else{
+            //se tiver start e end pega limitado ao start e ao end
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY id_ordem ASC LIMIT $start , $end");
+        }
         $sql->execute();
         return $sql->fetchAll();
     }
+
+    public static function excluirItem($tabela,$id=false){
+        if($id == false){
+            Painel::alerta('erro','É preciso selecionar um item para deletar!');
+        }else{
+            $sql = MySql::conectar()->prepare("DELETE FROM `$tabela` WHERE id = ?");
+        }
+        $sql->execute(array($id));
+    }
+
+    public static function excluirImagem($tabela,$id=false){
+        if($id == false){
+            Painel::alerta('erro','É preciso selecionar um slide para deletar!');
+        }else{
+            $sql = MySql::conectar()->prepare("SELECT slide FROM `$tabela` WHERE id = ?");
+            $sql->execute(array($id));
+            $imagem = $sql->fetch()['slide'];
+            Painel::deleteFile($imagem);
+        }       
+    }
+
+    public static function selectItem($tabela,$id){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE id = ?");
+        $sql->execute(array($id));
+        return $sql->fetch();
+    }
+
+    public static function editarItem($arr){
+            //$arr pega o post como um todo (todos os valores do form)
+            $certo = true;
+            $primeiraInt = true;
+            $nome_tabela = $arr['nome_tabela'];
+            $query = "UPDATE `$nome_tabela` SET ";
+            foreach ($arr as $key => $value) {
+                $nome = $key;
+                $valor = $value;
+                if($nome == 'acao' || $nome == 'nome_tabela' || $nome =='id')
+                    //se for o post acao ou post nome_tabela ignora e volta o foreach
+                    continue;
+                if($value == ''){
+                    //se tiver algo em branco, quebra e da erro
+                    $certo = false;
+                    break;
+                }
+                if($primeiraInt){
+                //concatena a cada interação pra adicioar dinamicamente os campos do db
+                    $query.="$nome=?";
+                    $primeiraInt=false;
+                }else{
+                //concatena a cada interação pra adicioar dinamicamente os campos do db
+                    $query.=", $nome=?";
+                }
+                //adiciona cada iteração do $value no array criado
+                $parametros[] = $value;
+            }
+            //concatenando
+            if($certo){
+                $sql = MySql::conectar()->prepare($query." WHERE id = ?");
+                //usa o array criado para substituir as "?"
+                $parametros[] = $arr['id'];
+                $sql->execute($parametros);
+            }
+            return $certo;
+    }
+
+    public static function orderItem($tabela,$orderType,$idItem){
+        if($orderType == 'up'){
+            $infoItemAtual = Painel::selectItem($tabela,$idItem);
+            $order_id = $infoItemAtual['id_ordem'];  
+            $itemBefore = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE id_ordem < $order_id ORDER BY id_ordem DESC LIMIT 1");
+            $itemBefore->execute();
+            if($itemBefore->rowCount() == 0)
+                return;
+            $itemBefore = $itemBefore->fetch();
+            Painel::editarItem(array('nome_tabela'=>$tabela,'id'=>$itemBefore['id'],'id_ordem'=>$infoItemAtual['id_ordem']));
+            Painel::editarItem(array('nome_tabela'=>$tabela,'id'=>$infoItemAtual['id'],'id_ordem'=>$itemBefore['id_ordem']));
+        }else if($orderType == 'down'){
+            $infoItemAtual = Painel::selectItem($tabela,$idItem);
+            $order_id = $infoItemAtual['id_ordem'];  
+            $itemBefore = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE id_ordem > $order_id ORDER BY id_ordem ASC LIMIT 1");
+            $itemBefore->execute();
+            if($itemBefore->rowCount() == 0)
+                return;
+            $itemBefore = $itemBefore->fetch();
+            Painel::editarItem(array('nome_tabela'=>$tabela,'id'=>$itemBefore['id'],'id_ordem'=>$infoItemAtual['id_ordem']));
+            Painel::editarItem(array('nome_tabela'=>$tabela,'id'=>$infoItemAtual['id'],'id_ordem'=>$itemBefore['id_ordem']));
+        }
+    }
+
+    public static function redirecionar($url){
+        echo '<script>location.href="'.$url.'"</script>';
+        die();
+    }
+
 }
 ?>

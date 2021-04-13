@@ -58,6 +58,33 @@ section.main .main-conteudo .box-conteudo .box-individual h1{
     padding-bottom: 20px;
 }
 
+
+section.noticias,
+section.cursos{
+    width: 100%;
+    margin-top: 30px;
+    text-align: center;
+}
+
+section.noticias .container > h1,
+section.cursos .container > h1{
+    margin-bottom: 15px;
+    font-weight: bold;
+    border-bottom: 1px solid #ccc;
+}
+
+section.noticias .noticia-single,
+section.cursos .cursos-single{
+    width: calc(100% / 3);
+    float: left;
+    padding: 10px;
+}
+
+section.noticias .noticia-single h1,
+section.cursos .cursos-single h1{
+    font-weight: lighter;
+}
+
 /*FOOTER*/
 
 footer{

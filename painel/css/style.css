@@ -369,6 +369,7 @@ aside.menu{
 
 table{
     width: 100%;
+    min-width: 900px;
     margin: 20px 0;
     border-collapse: collapse;
     text-align: center;
@@ -385,6 +386,11 @@ table td{
     padding: 8px 0;
 }
 
+table td img{
+    width: 90px;
+    height: 50px;
+}
+
 table tr{
     border-bottom: 1px solid #78909c;
     color: #2f3042;
@@ -392,11 +398,15 @@ table tr{
 
 table a.btn{
     text-decoration: none;
-    padding: 6px 4px;
+    padding: 6px 12px;
     color: white;
     display: inline-block;
     font-size: 13px;
     font-weight: bold;
+}
+
+.wraper-table{
+    overflow-x: auto;
 }
 
 table a.btn.edit{
@@ -405,6 +415,34 @@ table a.btn.edit{
 
 table a.btn.del{
     background: #f75353;
+}
+
+table a.btn.order{
+    background: #225c9e;
+}
+
+/*Paginação*/
+
+.paginacao{
+    text-align: center;
+    margin: 20px 0;
+}
+
+.paginacao a{
+    font-size: 14px;
+    margin: 0 2px;
+    display: inline-block;
+    padding: 3px 6px;
+    border: 1px solid #78909c;
+    text-decoration: none;
+    border-radius: 2px;
+    color: #2f3042;
+    font-weight: bold;
+}
+
+.paginacao a.pagina-selecionada{
+    background: #2f3d42;
+    color: white;
 }
 
 .box-alerta{
@@ -444,6 +482,9 @@ form .form-group-login:nth-last-of-type(2){
     color: #455a64;
     padding-right: 10px;
 }
+
+
+
 
 /*Media Querys*/
 

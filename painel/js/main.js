@@ -46,4 +46,14 @@ $(function(){
             $('.menu').css('width','300px').css('padding','10px 0');
         }
     });
+
+    $('[actionBtn=deletar]').click(function(){
+        var resposta = confirm("Tem certeza que deseja excluir?");
+        if(resposta == true){
+            return true;
+        }else{
+            return false;
+        }    
+    });
+
 });
