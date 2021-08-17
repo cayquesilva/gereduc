@@ -12,7 +12,7 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700" rel="stylesheet">
     <link href="<?php echo INCLUDE_PATH_PAINEL ?>css/style.css" rel="stylesheet"/>
     <link href="<?php echo INCLUDE_PATH ?>css/all.min.css" rel="stylesheet"/>
-    <title>Painel de Controle</title>
+    <title>Gerenciamento | Observatório - SEDUC</title>
 </head>
 <body>
 
@@ -36,17 +36,15 @@
             </div><!--nome-usuario-->
         </div><!--box-usuario-->
         <div class="items-menu">
-            <h2>Cadastro</h2>
-            <a <?php selecionadoMenu('cadastrar-noticia'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-noticia">Cadastrar Notícia</a>
-            <a <?php selecionadoMenu('cadastrar-curso'); verificaPermissaoMenu(1);?> href="">Cadastrar Curso</a>
-            <a <?php selecionadoMenu('cadastrar-slide'); verificaPermissaoMenu(1);?> href="">Cadastrar Slide</a>
-            <h2>Gestão</h2>
-            <a <?php selecionadoMenu('listar-noticia'); verificaPermissaoMenu(1);?> href="">Listar Notícias</a>
-            <a <?php selecionadoMenu('listar-curso'); verificaPermissaoMenu(1);?> href="">Listar Cursos</a>
-            <a <?php selecionadoMenu('listar-slide'); verificaPermissaoMenu(1);?> href="">Listar Slides</a>
-            <h2>Administração do Painel</h2>
-            <a <?php selecionadoMenu('editar-usuario'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>editar-usuario">Editar Usuário</a>
-            <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Adicionar Usuários</a>
+            <h2>Cadastros</h2>
+            <a <?php selecionadoMenu('cadastrar-unidade'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-unidade">Cadastrar Unidade</a>
+            <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Cadastrar Funcionário</a>
+            <h2>Gerenciamento</h2>
+            <a <?php selecionadoMenu('listar-unidades'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-unidades">Listar Unidades</a>
+            <a <?php selecionadoMenu('listar-funcionarios'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-funcionarios">Listar Funcionários</a>
+            <h2>Relatórios</h2>
+            <a <?php selecionadoMenu('relatorio-geral'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>relatorio-geral">Relatório Geral</a>
+            <a <?php selecionadoMenu('relatorio-unidade'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>relatorio-unidade">Relatório por Unidade</a>
             <h2>Configuração Geral</h2>
             <a <?php selecionadoMenu('editar-site'); ?> href="">Editar Site</a>
         </div><!--items-menu-->
@@ -58,14 +56,16 @@
                 <i class="fa fa-bars"></i>
             </div><!--menu-btn-->
             <div class="logout">
-                <a href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Início</span></a>
+                <a <?php /*@ não retorna erro caso não tenha get*/if(@$_GET['url'] == ''){?>style="background: #60727a; padding: 10px 20px;"<?php };
+                    selecionadoMenu('');?> href="<?php echo INCLUDE_PATH_PAINEL ?>"><i class="fas fa-home"></i><span>Início</span>
+                </a>
                 <a href="<?php echo INCLUDE_PATH_PAINEL ?>?logout"><i class="fas fa-sign-out-alt"></i><span>Sair</span></a>
             </div><!--logout-->
             <div class="clear"></div>
         </div><!--center-->
     </header>   
     <div class="content">
-        <?php Painel::carregarPagina();?>
+        <?php Painel::carregarPagina(1);?>
     </div><!--content-->
     <script src="<?php echo INCLUDE_PATH ?>js/jquery.js"></script>
 <script src="<?php echo INCLUDE_PATH_PAINEL ?>js/main.js"></script>

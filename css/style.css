@@ -1,10 +1,10 @@
 *{
-    padding: 0;
     margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-html, body{
+html,body{
     height: 100%;
 }
 
@@ -18,72 +18,183 @@ html, body{
     clear: both;
 }
 
-ul{
+.flex{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+li{
     list-style-type: none;
 }
 
-ul a{
+li a{
     text-decoration: none;
 }
 
-/*CONF DE ESTILOS*/
+/*Personalizações*/
 
-/*Header e Topbar*/
-
-header .top-bar .menu,
-header .top-bar .logo{
-    text-align: center;
-}
-
-header .top-bar .nav-menu ul li{
-    display: inline-block;
-}
-
-/*Navegação e Conteúdos*/
-
-section.main .main-conteudo .box-conteudo{
+/*Header*/
+header{
+    width: 100%;
+    background-color: #3a546d;
     display: flex;
-    flex-wrap: wrap;
-    align-items: center;
+    flex-direction: row;
     justify-content: center;
-}
-
-section.main .main-conteudo .box-conteudo .box-individual{
-    padding: 15px;
-    margin-top: 25px;
-    border: 1px solid #ccc;
-}
-
-section.main .main-conteudo .box-conteudo .box-individual h1{
-    padding-bottom: 20px;
-}
-
-/*FOOTER*/
-
-footer{
-    width: 100%;
+    align-items: center;
     text-align: center;
-    background-color: white;
-    font-size: 14px;
-    padding-bottom: 50px;
-    position: fixed;
-    bottom: 0;
+    padding: 8px;
+    color: white;
 }
 
-footer.fixed{
-    position: fixed;
-    bottom: 0;
-    width: 100%;
+header .menu,header .logo, header .redes-sociais{
+    flex: 33.3%;
 }
 
-footer .footer-social{
-    width: 50%;
+nav.nav-menu ul li{
+    display: inline-block;
+    margin: 0 8px;    
+}
+
+nav.nav-menu ul li a{
+    color: white;
+    font-weight: lighter;
+}
+
+nav.nav-menu ul li a:hover{
+    color: #3f90d2;
+}
+
+/*Main*/
+
+section.main{
+    padding: 15px 0;
+}
+
+section.main .container .banner-wraper{
+    height: 40vh;
+}
+
+section.main .container .banner-wraper .banner{
+    background-image: url("../images/main-banner.png");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: right;
+    height: 100%;
     float: left;
+    width: 50%;
+    min-width: 300px;
 }
 
-/*404*/
+section.main .container .banner-wraper .text-banner{
+    float: left;
+    width: 50%;
+    text-align: left;
+}
 
-section.erro404{
+section.main .container .banner-wraper .text-banner h1{
+    margin-top: 60px;
+    font-size: 24px;
+    color: #13375b;
+    font-weight: bolder;
+}
+
+section.main .container .banner-wraper .text-banner p{
+    font-size: 18px;
+    color: #3f90d2;
+    font-weight: lighter;
+}
+
+
+/*NOTICIAS*/
+
+section.noticias{
+    background-color: #13375b;
     padding: 30px 0;
     text-align: center;
+}
+
+section.noticias h1{
+    font-weight: bolder;
+    color: white;
+}
+
+
+
+section.noticias .container .noticias-single{
+    padding: 10px 12px;
+    margin: 15px 20px 0 20px;
+    flex: calc(100% / 6);
+    min-height: 200px;
+    border: 1px solid white;
+    border-radius: 15px;
+    box-shadow: 3px 3px 3px white;
+  
+}
+
+section.noticias .container .noticias-single h1{
+   font-weight: bolder;
+   color: white;
+   padding-bottom: 12px;
+}
+
+section.noticias .container .noticias-single p{
+    font-weight: lighter;
+    color:white;
+    padding: 0 20px;
+    text-align: justify;
+ }
+
+
+/*FUNC/CONTATO*/
+
+section.funcionalidades{
+    padding: 30px 0;
+    text-align: center;
+}
+
+section.funcionalidades h1{
+    font-weight: bolder;
+    color: #13375b;
+}
+
+section.funcionalidades li a{
+    color: #13375b;
+    font-weight: bolder;
+    font-size: 16px;
+}
+
+section.funcionalidades .func,section.funcionalidades .contato{
+    flex: 50%;
+    text-align: center;
+    padding-top: 20px;
+}
+
+
+/*Error404*/
+section.erro404{
+    width: 100%;
+    padding-top: 40%;
+    text-align: center;
+    position: relative;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+/*Footer*/
+footer{
+    position: relative;
+    bottom: 0;
+    width: 100%;
+    margin-top: 30px;
+}
+
+
+footer p{
+    text-align: center;
+    color: #13375b;
+    padding-bottom: 12px;
+    font-weight: lighter;
 }

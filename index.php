@@ -1,5 +1,4 @@
 <?php include('config.php')?>
-<?php Site::updateUsuarioOnline();?>
 <?php Site::contadorVisita();?>
 <!DOCTYPE html>
 <html lang="en">
@@ -11,7 +10,7 @@
     <meta name="author" content="RennSolucoes"/>
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0"/>
     <link href="<?php echo INCLUDE_PATH;?>css/style.css" rel="stylesheet">
-    <title>GerEduc</title>
+    <title>Observatório | SEDUC - CG</title>
 </head>
 <body>
 

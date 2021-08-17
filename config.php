@@ -9,19 +9,19 @@
 
     spl_autoload_register($autoload);
     //melhorando caminho de pastas
-    define('INCLUDE_PATH','http://localhost/projects/gereduc/');
+    define('INCLUDE_PATH','http://localhost/projects/observatorio/');
     define('INCLUDE_PATH_PAINEL',INCLUDE_PATH.'painel/');
     define('BASE_DIR_PAINEL',__DIR__.'/painel');
-    //conecção com bd
+    //conexão com bd
     define('HOST','localhost');
     define('USER','root');
     define('PASSWORD','');
-    define('DATABASE','gereduc');
-    define('NOME_EMPRESA','InteliEduc');
+    define('DATABASE','observatorio');
+    define('NOME_EMPRESA','Observatorio | Seduc');
     //Funções
     
     function pegaCargo($indice){
-        return Painel::$cargos[$indice];    
+        return Painel::$cargos[$indice];
     }
 
     function selecionadoMenu($par){
@@ -50,4 +50,11 @@
             die();
         }
     }
-?>
+
+    function verificaPermissao($permissao){
+        if($_SESSION['cargo'] >= $permissao)
+            return true;
+        else
+            return false;
+    
+    }
