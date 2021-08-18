@@ -131,11 +131,11 @@ body{
 }
 
 header{
-    width: calc(100% - 300px);
+    width: calc(100% - 250px);
     padding: 10px 0;
     background: #78909c;
     position: relative;
-    left: 300px;
+    left: 250px;
 }
 
 .menu-wrapper{
@@ -144,7 +144,7 @@ header{
 
 aside.menu{
     float: left;
-    width: 300px;
+    width: 250px;
     height: 100%;
     background: #455a64;
     overflow-y: auto;
@@ -232,9 +232,9 @@ aside.menu{
 /*Conteudo principal*/
 
 .content{
-    width: calc(100% - 300px);
+    width: calc(100% - 250px);
     position: relative;
-    left: 300px;
+    left: 250px;
     padding: 10px;
 }
 
@@ -324,15 +324,83 @@ aside.menu{
     margin: 30px 0;
 }
 
-.box-content form label{
+.box-content form h3{
     font-size: 17px;
     font-weight: 300;
     color: black;
     display: block;
 }
 
+.box-content form label{
+    font-size: 17px;
+    font-weight: 300;
+    color: black;
+    display: inline-block;
+    padding: 12px 0;
+}
+
 .box-content .form-group{
     margin: 15px 0;
+}
+
+.box-content .check-item{
+    display: inline-block;
+    margin-right: 10px;
+}
+
+.box-content form input[type=number]{
+    font-size: 16px;
+    font-weight: normal;
+    color: black;
+    width: 80px;
+    height: 30px;
+    padding: 8px;
+    margin-top: 8px;
+    border: 1px solid #455a64;
+    border-radius: 10px;
+}
+
+.box-content .box-qtd{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.box-content .qtd{
+    flex: 20%;
+    text-align: center;
+    color: black;
+}
+
+.box-content .rad{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.box-content .rad .flex-rad{
+    text-align: center;
+    color: black;
+    margin-left: 12px;
+    margin-right: 12px;
+}
+
+fieldset{
+    padding: 8px;
+    margin: 10px 0;
+    border: 1px solid #1de9b6;
+    border-radius: 10px;
+}
+
+legend{
+    padding: 4px 20px;
+    font-size: 14px;
+    border: 2px solid #455a64;
+    border-radius: 10px;
+    color: white;
+    background: #2f3042;
+    font-weight: bolder;
 }
 
 .box-content form input[type=text],
@@ -342,10 +410,11 @@ aside.menu{
     font-weight: normal;
     color: black;
     width: 100%;
-    height: 40px;
+    height: 30px;
     padding-left: 8px;
     margin-top: 8px;
     border: 1px solid #455a64;
+    border-radius: 10px;
 }
 
 .box-content form textarea{
@@ -360,6 +429,18 @@ aside.menu{
     resize: vertical;
 }
 
+.box-content form div{
+    display: block;
+
+}
+
+.box-content form input[type=checkbox],
+.box-content form input[type=radio]{
+    transform: scale(1.3);
+    display: inline-block;
+    margin-left: 12px;
+    margin-right: 6px;
+}
 
 .box-content form input[type=file]{
     border: 1px solid #455a64;

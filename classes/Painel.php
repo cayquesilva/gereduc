@@ -2,20 +2,36 @@
 
 class Painel{
 
+    public static $turnos= [
+        '0'=>'Manhã',
+        '1'=>'Tarde',
+        '2'=>'Noite',
+        '3'=>'Integral'
+    ];
+
     public static $etapas = [
-        '0'=>'Ensino Fundamental - Anos Iniciais',
-        '1'=>'Ensino Fundamental - Anos Finais'];
+        '0'=>'Educação Infantil',
+        '1'=>'Ensino Fundamental - Anos Iniciais',
+        '2'=>'Ensino Fundamental - Anos Finais',
+        '3'=>'Ensino de Jovens e Adultos - EJA',
+        '4'=>'Atendimento Educacional Especializado - AEE'];
 
     public static $series = [
-        '0'=>'1º Ano',
-        '1'=>'2º Ano',
-        '2'=>'3º Ano',
-        '3'=>'4º Ano',
-        '4'=>'5º Ano',
-        '5'=>'6º Ano',
-        '6'=>'7º Ano',
-        '7'=>'8º Ano',
-        '8'=>'9º Ano'];
+        '0'=>'Berçário 1',
+        '1'=>'Berçário 2',
+        '2'=>'Maternal 1',
+        '3'=>'Maternal 2',
+        '4'=>'Pré Escolar 1',
+        '5'=>'Pré Escolar 2',
+        '6'=>'1º Ano',
+        '7'=>'2º Ano',
+        '8'=>'3º Ano',
+        '9'=>'4º Ano',
+        '10'=>'5º Ano',
+        '11'=>'6º Ano',
+        '12'=>'7º Ano',
+        '13'=>'8º Ano',
+        '14'=>'9º Ano'];
 
     public static $nucleos = [
         '0'=>'Núcleo 1',

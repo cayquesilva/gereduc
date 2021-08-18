@@ -2,7 +2,7 @@ $(function(){
 
     var open = true;
     var windowSize = $(window)[0].innerWidth;
-    var calcWindow = windowSize-300;
+    var calcWindow = windowSize-250;
     if(windowSize <= 768){
         open = false;
         $('.menu').css('width','0').css('padding','0');
@@ -18,13 +18,13 @@ $(function(){
         }else{
             //menu fechado
             $('.menu').css('display','block');
-            $('.menu').animate({'width':'300px','padding':'10px 0'});
+            $('.menu').animate({'width':'250px','padding':'10px 0'});
             if(windowSize<=768){
-                $('header,.content').animate({'left':'300px'},function(){
+                $('header,.content').animate({'left':'250px'},function(){
                     open = true;
                 });
             }else{
-                $('header,.content').animate({'left':'300px'},function(){
+                $('header,.content').animate({'left':'250px'},function(){
                     $('header,.content').css('width',calcWindow);
                     open = true;
                 });
@@ -42,8 +42,8 @@ $(function(){
             open=false;
         }else{
             open=true;
-            $('.content,header').css('width','calc(100% - 300px').css('left','300px');
-            $('.menu').css('width','300px').css('padding','10px 0');
+            $('.content,header').css('width','calc(100% - 250px').css('left','250px');
+            $('.menu').css('width','250px').css('padding','10px 0');
         }
     });
 
