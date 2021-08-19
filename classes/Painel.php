@@ -307,7 +307,14 @@ class Painel{
         //$arr pega o post como um todo (todos os valores do form)
         $certo = true;
         $nome_tabela = $arr['nome_tabela'];
+        $inep = $arr['inep'];
+        $tabturnos = "tb_unidades.turno";
+        $tabseries = "tb_unidades.serie";
+        $tabetapas = "tb_unidades.etapa";
         $query = "INSERT INTO `$nome_tabela` VALUES (?";
+        $query2 = "INSERT INTO `$tabturnos` VALUES (?";
+        $query3 = "INSERT INTO `$tabetapas` VALUES (?";
+        $query4 = "INSERT INTO `$tabseries` VALUES (?";
         foreach ($arr as $key => $value) {
             $nome = $key;
             if($nome == 'acao' || $nome == 'nome_tabela')
@@ -323,6 +330,39 @@ class Painel{
             }
             if($nome == 'inep'){
                 $parametros[] = $value;
+                continue;
+            }
+            if($nome == 'turnos'){
+                $turnos = $arr['turnos'];
+                foreach ($turnos as $t_value){
+                    $query2.=",?";
+                    $query2.=")";
+                    $sql2 = MySql::conectar()->prepare($query2);
+                    $sql2->execute(array($inep,$t_value));
+                    $query2 = "INSERT INTO `$tabturnos` VALUES (?";
+                }
+                continue;
+            }
+            if($nome == 'etapas'){
+                $etapas = $arr['etapas'];
+                foreach($etapas as $e_value){
+                    $query3.=",?";
+                    $query3.=")";
+                    $sql3 = MySql::conectar()->prepare($query3);
+                    $sql3->execute(array($inep,$e_value));
+                    $query3 = "INSERT INTO `$tabetapas` VALUES (?";
+                }  
+                continue;
+            }
+            if($nome == 'series'){
+                $series = $arr['series'];
+                foreach ($series as $s_value){
+                    $query4.=",?";
+                    $query4.=")";
+                    $sql4 = MySql::conectar()->prepare($query4);
+                    $sql4->execute(array($inep,$s_value));
+                    $query4 = "INSERT INTO `$tabseries` VALUES (?";
+                }  
                 continue;
             }
             if($value == ''){

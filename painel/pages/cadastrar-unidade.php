@@ -56,7 +56,7 @@
                 <div class="box-check-inner">
                     <?php foreach (Painel::$turnos as $key => $value) {
                         echo '<div class="check-item">';
-                        echo '<input type="checkbox" name="turnos" id="'.$value.'" value="'.$value.'">';
+                        echo '<input type="checkbox" name="turnos[]" id="'.$value.'" value="'.$value.'">';
                         echo '<label for="'.$value.'">'.$value.'</label>';
                         echo '</div>';
                     };?>
@@ -67,7 +67,7 @@
                 <div class="box-check-inner">
                     <?php foreach (Painel::$etapas as $key => $value) {
                         echo '<div class="check-item">';
-                        echo '<input type="checkbox" name="etapas" id="'.$value.'" value="'.$value.'">';
+                        echo '<input type="checkbox" name="etapas[]" id="'.$value.'" value="'.$value.'">';
                         echo '<label for="'.$value.'">'.$value.'</label>';
                         echo '</div>';
                     };?>
@@ -78,7 +78,7 @@
                 <div class="box-check-inner">
                     <?php foreach (Painel::$series as $key => $value) {
                         echo '<div class="check-item">';
-                        echo '<input type="checkbox" name="series" id="'.$value.'" value="'.$value.'">';
+                        echo '<input type="checkbox" name="series[]" id="'.$value.'" value="'.$value.'">';
                         echo '<label for="'.$value.'">'.$value.'</label>';
                         echo '</div>';
                     };?>
