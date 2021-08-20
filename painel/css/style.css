@@ -35,15 +35,19 @@ body{
 }
 
 .blue{
-    background: #1e42a5;
+    background: #225c9e !important;
 }
 
 .red{
-    background: #882020;
+    background: #923434 !important;
 }
 
 .green{
-    background: green;
+    background: #229e7f !important;
+}
+
+.yellow{
+    background: #887d18 !important;
 }
 
 /*ESTILIZANDO PAGINA DE LOGIN*/
@@ -91,7 +95,7 @@ body{
 
 .box-login input[type=submit]:hover,
 .box-content form input[type=submit]:hover{
-    background: #229e7f;
+    background: #1de9b6;
 }
 
 
@@ -101,7 +105,7 @@ body{
     height: 40px;
     cursor: pointer;
     margin-top: 8px;
-    background: #1de9b6;
+    background: #229e7f;
     color: white;
     border: 0;
     font-size: 14px;
@@ -244,6 +248,13 @@ aside.menu{
     margin-bottom: 25px;
 }
 
+.box-content span,
+.box-content h2 i{
+    font-weight: bolder;
+    color: #229e7f;
+
+}
+
 .items-menu{
     margin-top: 30px;
 }
@@ -270,13 +281,14 @@ aside.menu{
 .box-metricas{
     margin-top: 20px;
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 .box-metrica-single{
-    display: inline-block;
-    width: calc(98% / 3);
+    flex: 20%;
     padding: 25px;
-    text-align: left;
+    margin: 4px;
 }
 
 .box-metrica-wraper h2,.box-metrica-wraper p{
@@ -376,7 +388,7 @@ aside.menu{
 .box-content .rad{
     display: flex;
     flex-wrap: wrap;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 .box-content .rad .flex-rad{
@@ -461,7 +473,7 @@ table{
 }
 
 table tr:nth-of-type(1){
-    background: #1de9b6;
+    background: #229e7f;
     color: white;
     font-weight: bold;
     border: 0;
@@ -495,11 +507,11 @@ table a.btn{
 }
 
 table a.btn.edit{
-    background: #f4b03e;
+    background: #887d18;
 }
 
 table a.btn.del{
-    background: #f75353;
+    background: #923434;
 }
 
 table a.btn.order{

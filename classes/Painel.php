@@ -385,10 +385,31 @@ class Painel{
         return $certo;
     }
 
-    public static function contaPrograma($tabela,$inep){
-        $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` WHERE inep = ?");
-        $sql->execute(array($inep));
+    public static function contaPrograma($tabela,$inep=null){
+        if($inep === null){
+            $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` ");
+            $sql->execute();
+        }else{
+            $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` WHERE inep = ?");
+            $sql->execute(array($inep));
+        }  
         return $sql->rowcount();
+    }
+
+    public static function contaAgentes($tabela,$agente){
+        if($agente == 'quadra' || $agente == 'biblioteca' || $agente == 'labinfo'){
+            $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` WHERE `$agente` = 's'");
+            $sql->execute();
+            $result = $sql->rowcount();
+        }else{
+            $sql = MySql::conectar()->prepare("SELECT sum($agente) FROM  `$tabela`");
+            $sql->execute();
+            $total = $sql->fetch();
+            foreach($total as $soma){
+                $result = $soma;
+            }
+        }
+        return $result;
     }
 
     public static function selectAllByUser($tabela,$user,$start=null,$end=null,$iniciais=null){

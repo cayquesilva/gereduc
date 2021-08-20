@@ -1,143 +1,162 @@
 <?php 
     verificaPermissaoPagina(1);
     $paginaAtual = isset($_GET['pagina']) ? (int)$_GET['pagina'] : 1;
-    $porPagina = 30;
+    $porPagina = 5;
     $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
-    $servidoresCadastrados = Painel::selectAll('tb_funcionario.dadospessoais',($paginaAtual-1) * $porPagina,$porPagina);
-    $locaisDeTrabalho = Painel::selectAll('tb_localtrabalho');
-    $servidorVigia = Painel::pegaCargos('tb_funcionario.dadospessoais',"vigia");
-    //se tiver excluir no endereço (quando clica em excluir adiciona a variavel na url)
-    if(isset($_GET['excluir'])){
-        //pega o valor do excluir passado no url
-        $idExcluir = intVal($_GET['excluir']);
-        Painel::excluirServidor('tb_funcionario.dadospessoais',$idExcluir);
-        Painel::redirecionar('home');
-    }
+    $unidades = Painel::selectAll('tb_admin.unidades',($paginaAtual-1) * $porPagina,$porPagina);
 ?>
 <div class="box-content w100">
-    <h2><i class="fa fa-home"></i> Ferramentas do sistema - <?php echo NOME_EMPRESA;?></h2>
+    <h2><i class="fa fa-home"></i> Olá <span><?php echo $_SESSION['nome'];?></span>, seja bem vindo(a) ao <span><?php echo NOME_EMPRESA;?></span></h2>
 </div><!--box=content-->
     
 <div class="box-content w100">
-    <h2><i class="fas fa-user-friends" aria-hidden="true"></i> Estatísticas Gerais</h2>
+    <h2><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></i> Estatísticas Gerais</h2>
     <div class="box-metricas">
-        <div class="box-metrica-single green">
+        <div class="box-metrica-single blue">
             <div class="box-metrica-wraper">
-                <h2>Total de Servidores Cadastrados</h2>
-                <p><?php echo count(Painel::selectAll('tb_funcionario.dadospessoais')); ?></p>
+                <h2>Total de Unidades</h2>
+                <p><?php echo count(Painel::selectAll('tb_admin.unidades')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
         <div class="box-metrica-single blue">
             <div class="box-metrica-wraper">
-                <h2>Total de Locais Cadastrados</h2>
-                <p><?php echo count($locaisDeTrabalho); ?></p>
+                <h2>Total de Estudantes Matriculados</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdestudantes')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-    
-        <div class="clear"></div>
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Estudantes AEE Matriculados</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdestudantesaee')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->    
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total Geral de Professores</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmas')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Professores Aee</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasaee')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Professores (Manhã)</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofmanha')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Professores (Tarde)</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdproftarde')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Professores (Noite)</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofnoite')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Professores (Integral)</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofintegral')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Total de Programas Ativos</h2>
+                <p><?php echo (Painel::contaPrograma('tb_unidades.programas')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
     </div><!--box-metricas-->
 </div><!--box=content-->
 
 <div class="box-content w100">
-    <h2><i class="fas fa-user-friends" aria-hidden="true"></i> Estatísticas de Servidores</h2>
+    <h2><i class="fas fa-landmark" aria-hidden="true"></i> Estatísticas de Infraestutura</h2>
     <div class="box-metricas">
-        <div class="box-metrica-single red">
+        <div class="box-metrica-single yellow">
             <div class="box-metrica-wraper">
-                <h2>Total de Vigias</h2>
-                <p><?php echo count($servidorVigia); ?></p>
+                <h2>Total Geral de Turmas</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmas')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-        <div class="box-metrica-single red">
+        <div class="box-metrica-single yellow">
             <div class="box-metrica-wraper">
-                <h2>Total de Professores da Ed. Básica 1</h2>
-                <p><?php echo count(Painel::pegaCargos('tb_funcionario.dadospessoais',"professor educacao basica 1")); ?></p>
+                <h2>Total de Turmas Aee</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasaee')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-        <div class="box-metrica-single red">
+        <div class="box-metrica-single yellow">
             <div class="box-metrica-wraper">
-                <h2>Total de Agentes Administrativos</h2>
-                <p><?php echo count(Painel::pegaCargos('tb_funcionario.dadospessoais',"agente administrativo")); ?></p>
+                <h2>Total de Turmas Adaptadas</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasadapt')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-    </div><!--box-metricas-->
-    <div class="box-metricas">
-        <div class="box-metrica-single red">
+        <div class="box-metrica-single yellow">
             <div class="box-metrica-wraper">
-                <h2>Total de Agentes Administrativos</h2>
-                <p><?php echo count(Painel::pegaCargos('tb_funcionario.dadospessoais',"agente administrativo")); ?></p>
+                <h2>Total de Unidades com Quadra</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','quadra')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-        <div class="box-metrica-single red">
+        <div class="box-metrica-single yellow">
             <div class="box-metrica-wraper">
-                <h2>Total de Supervisores Educacionais</h2>
-                <p><?php echo count(Painel::pegaCargos('tb_funcionario.dadospessoais',"orientador educacional")); ?></p>
+                <h2>Total de Unidades com Bibliotecas</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','biblioteca')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-        <div class="box-metrica-single red">
+        <div class="box-metrica-single yellow">
             <div class="box-metrica-wraper">
-                <h2>Total de Assistentes Sociais</h2>
-                <p><?php echo count(Painel::pegaCargos('tb_funcionario.dadospessoais',"assistente social educacional")); ?></p>
+                <h2>Total de Unidades com Lab. de Informática</h2>
+                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','labinfo')); ?></p>
             </div><!--box-metrica-wraper-->
         </div><!--box-metrica-single-->
-        <div class="clear"></div>
     </div><!--box-metricas-->
 </div><!--box=content-->
 
 <div class="box-content w100">
-    <h2><i class="fas fa-book" aria-hidden="true"></i> Servidores Cadastrados</h2>
-    <div class="tabela-resp">
-        <div class="row">
-            <div class="col">
-                <span>Matrícula</span>
-            </div><!--col-->
-            <div class="col">
-                <span>Nome</span>
-            </div><!--col-->
-            <div class="col">
-                <span>Alocação</span>
-            </div><!--col-->
-            <div class="col">
-                <span>Editar</span>
-            </div><!--col-->
-            <div class="col">
-                <span>Excluir</span>
-            </div><!--col-->
-            <div class="clear"></div>
-        </div><!--row-->
-        <?php 
-            //laço para preencher tabela de acordo com o bd
-            foreach($servidoresCadastrados as $key => $value){
-        ?>
-        <div class="row">
-            <div class="col">
-                <span><?php echo $value['matricula']?></span>
-            </div><!--col-->
-            <div class="col">
-                <span><?php echo $value['nome']?></span>
-            </div><!--col-->
-            <div class="col">
-                <span>Implementar Select do banco Eventos</span>
-            </div><!--col-->
-            <div class="col">
-                <a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>alterar-servidor?matricula=<?php echo $value['matricula'];?>"><i class=" fa fa-pen"></i></a>
-            </div><!--col-->
-            <div class="col">
-                <a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>home?excluir=<?php echo $value['matricula'];?>"><i class=" fa fa-times"></i></a>
-            </div><!--col-->
-            <div class="clear"></div>
-        </div><!--row-->
-        <?php  }?>
-    </div><!--tabela-resp-->
+    <h2><i class="fas fa-book" aria-hidden="true"></i> Unidades Cadastradas</h2>
+    <div class="wraper-table">
+        <table>
+            <tr>
+                <td>INEP</td>
+                <td>Nome da Unidade</td>
+                <td>Gestor(a)</td>
+                <td>Contato</td>
+                <td>Programas Ativos</td>
+                <td>Registrar Programas</td>
+                <td>Editar</td>
+                <td>Excluir</td>
+            </tr>
+            <?php
+                foreach ($unidades as $key => $value) {
+            ?>
+            <tr>
+                <td><?php echo $value['inep']; ?></td>
+                <td><?php echo $value['nome_unidade']; ?></td>
+                <td><?php echo $value['nome_gestor']; ?></td>
+                <td><?php echo $value['contato_gestor']; ?></td>
+                <td><?php echo Painel::contaPrograma('tb_unidades.programas',$value['inep']); ?></td>
+                <td><a actionBtn="programas" class="btn program" href="<?php echo INCLUDE_PATH_PAINEL?>registro-programas?inep=<?php echo $value['inep'];?>"><i class="fas fa-tasks"></i></a></td>
+                <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-local?inep=<?php echo $value['inep'];?>"><i class=" fa fa-pen"></i></a></td>
+                <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-unidades?excluir=<?php echo $value['inep'];?>"><i class=" fa fa-times"></i></a></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div><!--wraper-table-->
     <div class="paginacao">
     <?php 
     //ceil arredonda para o proximo inteiro.
-        $totalPaginas = ceil(count(Painel::selectAll('tb_funcionario.dadospessoais')) / $porPagina);
+        $totalPaginas = ceil(count(Painel::selectAll('tb_admin.unidades')) / $porPagina);
         for($i = 1;$i <= $totalPaginas;$i++) {
             if($i == $paginaAtual)
                 echo '<a class="pagina-selecionada" href="'.INCLUDE_PATH_PAINEL.'home?pagina='.$i.'">'.$i.'</a>';
             else
                 echo '<a href="'.INCLUDE_PATH_PAINEL.'home?pagina='.$i.'">'.$i.'</a>';
-        }            
+        }
     ?>
-    </div><!--paginacao-->
+</div><!--paginacao-->
 </div><!--box=content-->
