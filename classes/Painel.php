@@ -418,17 +418,6 @@ class Painel{
         return $sql->fetchAll();
     }
 
-    public static function selectEvento($tabela,$start=null,$end=null){
-        //se não for passado o start e o end, pega tudo
-        if($start == null && $end == null){
-            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY evento ASC");
-        }else{
-            //se tiver start e end pega limitado ao start e ao end
-            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` ORDER BY evento ASC LIMIT $start , $end");
-        }
-        $sql->execute();
-        return $sql->fetchAll();
-    }
 
     public static function selectAll($tabela,$start=null,$end=null){
         //se não for passado o start e o end, pega tudo
@@ -442,12 +431,28 @@ class Painel{
         return $sql->fetchAll();
     }
 
+    public static function selectAllInep($tabela,$inep,$item){
+        if( $item == null ){
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE inep = ?");
+            $sql->execute(array($inep));
+        }else{
+            $sql = MySql::conectar()->prepare("SELECT $item FROM `$tabela` WHERE inep = ?");
+            $sql->execute(array($inep));
+        }
+        return $sql->fetchAll();
+    }
+
     public static function pegaCargos($tabela,$cargo){
         $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE cargo = ?");
         $sql->execute(array($cargo));
         return $sql->fetchAll();
     }
 
+    public static function contaItem($tabela,$inep,$col,$item){
+        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE inep = ? AND `$col` = ?");
+        $sql->execute(array($inep,$item));
+        return $sql->rowCount();
+    }
 
     public static function excluirItem($tabela,$id=false){
         if($id == false){

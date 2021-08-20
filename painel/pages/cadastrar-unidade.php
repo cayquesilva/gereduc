@@ -109,10 +109,6 @@
                     <input type="number" name="qtdestudantesaee" min="0">
                 </div><!--form-group-->
                 <div class="form-group qtd">
-                    <h3>Quantidade de Estudantes (AEE):</h3>
-                    <input type="number" name="qtdestudantesaee" min="0">
-                </div><!--form-group-->
-                <div class="form-group qtd">
                     <h3>Quantidade de Professores (Manhã):</h3>
                     <input type="number" name="qtdprofmanha" min="0">
                 </div><!--form-group-->
@@ -127,6 +123,10 @@
                 <div class="form-group qtd">
                     <h3>Quantidade de Professores (Integral):</h3>
                     <input type="number" name="qtdprofintegral" min="0">
+                </div><!--form-group-->
+                <div class="form-group qtd">
+                    <h3>Quantidade de Professores (AEE):</h3>
+                    <input type="number" name="atdprofaee" min="0">
                 </div><!--form-group-->
             </div><!--box-qtd-->
         </fieldset>
