@@ -21,6 +21,8 @@
             <td>Nome da Unidade</td>
             <td>Gestor(a)</td>
             <td>Contato</td>
+            <td>Programas Ativos</td>
+            <td>Registrar Programas</td>
             <td>Editar</td>
             <td>Excluir</td>
         </tr>
@@ -32,6 +34,8 @@
             <td><?php echo $value['nome_unidade']; ?></td>
             <td><?php echo $value['nome_gestor']; ?></td>
             <td><?php echo $value['contato_gestor']; ?></td>
+            <td><?php echo Painel::contaPrograma('tb_unidades.programas',$value['inep']); ?></td>
+            <td><a actionBtn="programas" class="btn program" href="<?php echo INCLUDE_PATH_PAINEL?>registro-programas?inep=<?php echo $value['inep'];?>"><i class="fas fa-tasks"></i></a></td>
             <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-local?inep=<?php echo $value['inep'];?>"><i class=" fa fa-pen"></i></a></td>
             <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-unidades?excluir=<?php echo $value['inep'];?>"><i class=" fa fa-times"></i></a></td>
         </tr>

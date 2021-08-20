@@ -506,6 +506,10 @@ table a.btn.order{
     background: #225c9e;
 }
 
+table a.btn.program{
+    background: #229e7f;
+}
+
 .col a.quest i{
     color: #1de9b6;
 }

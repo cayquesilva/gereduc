@@ -385,6 +385,11 @@ class Painel{
         return $certo;
     }
 
+    public static function contaPrograma($tabela,$inep){
+        $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` WHERE inep = ?");
+        $sql->execute(array($inep));
+        return $sql->rowcount();
+    }
 
     public static function selectAllByUser($tabela,$user,$start=null,$end=null,$iniciais=null){
         if($start === null && $end === null){
