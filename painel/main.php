@@ -37,14 +37,14 @@
         </div><!--box-usuario-->
         <div class="items-menu">
             <h2>Cadastros</h2>
-            <a <?php selecionadoMenu('cadastrar-unidade'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-unidade">Cadastrar Unidade</a>
-            <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Cadastrar Funcionário</a>
+            <a <?php selecionadoMenu('cadastrar-unidade'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>cadastrar-unidade">Cadastrar Unidade</a>
+            <a <?php selecionadoMenu('adicionar-usuario'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>adicionar-usuario">Cadastrar Usuário</a>
             <h2>Gerenciamento</h2>
-            <a <?php selecionadoMenu('listar-unidades'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-unidades">Listar Unidades</a>
-            <a <?php selecionadoMenu('listar-funcionarios'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-funcionarios">Listar Funcionários</a>
+            <a <?php selecionadoMenu('listar-unidades'); verificaPermissaoMenu(0);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-unidades">Listar Unidades</a>
+            <a <?php selecionadoMenu('listar-usuarios'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>listar-usuarios">Listar Usuários</a>
             <h2>Relatórios</h2>
-            <a <?php selecionadoMenu('relatorio-geral'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>relatorio-geral">Relatório Geral</a>
-            <a <?php selecionadoMenu('relatorio-unidade'); verificaPermissaoMenu(1);?> href="<?php echo INCLUDE_PATH_PAINEL ?>relatorio-unidade">Relatório por Unidade</a>
+            <a <?php selecionadoMenu('relatorio-geral'); verificaPermissaoMenu(0);?> href="<?php echo INCLUDE_PATH_PAINEL ?>relatorio-geral">Relatório Geral</a>
+            <a <?php selecionadoMenu('relatorio-unidade'); verificaPermissaoMenu(0);?> href="<?php echo INCLUDE_PATH_PAINEL ?>relatorio-unidade">Relatório por Unidade</a>
             <h2>Configuração Geral</h2>
             <a <?php selecionadoMenu('editar-site'); ?> href="">Editar Site</a>
         </div><!--items-menu-->

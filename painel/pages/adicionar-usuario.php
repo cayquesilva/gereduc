@@ -1,4 +1,4 @@
-<?php verificaPermissaoPagina(2);?>
+<?php verificaPermissaoPagina(1);?>
 <div class="box-content">
     <h2><i class="fas fa-plus"></i> Criar Usuário</h2>
     <!--enctype serve para permitir envio de imagem no formulário-->
@@ -23,29 +23,32 @@
             }
         };
     ?>
-    <div class=form-group>
-        <label>Nome:</label>
-        <input type="text" name="nome">
-    </div><!--form-group-->
-    <div class=form-group>
-        <label>Usuário:</label>
-        <input type="text" name="user">
-    </div><!--form-group-->
-    <div class=form-group>
-        <label>Senha:</label>
-        <input type="password" name="password">
-    </div><!--form-group-->
-    <div class=form-group>
-        <label>Cargo:</label>
-        <select name="cargo">
-            <?php foreach (Painel::$cargos as $key => $value) {
-                //só libera criação de usuários de cargo abaixo 
-                //de quem está solicitando a criação
-               if($key < $_SESSION['cargo'])
-                echo '<option value="'.$key.'">'.$value.'</option>';
-            };?>
-        </select>
-    </div><!--form-group-->
+    <fieldset>
+        <legend>Dados Pessoais</legend>
+        <div class=form-group>
+            <h3>Nome:</h3>
+            <input type="text" name="nome">
+        </div><!--form-group-->
+        <div class=form-group>
+            <h3>Usuário:</h3>
+            <input type="text" name="user">
+        </div><!--form-group-->
+        <div class=form-group>
+            <h3>Senha:</h3>
+            <input type="password" name="password">
+        </div><!--form-group-->
+        <div class=form-group>
+            <h3>Cargo:</h3>
+            <select name="cargo">
+                <?php foreach (Painel::$cargos as $key => $value) {
+                    //só libera criação de usuários de cargo abaixo 
+                    //de quem está solicitando a criação
+                if($key < $_SESSION['cargo'])
+                    echo '<option value="'.$key.'">'.$value.'</option>';
+                };?>
+            </select>
+        </div><!--form-group-->
+    </fieldset>
     <div class=form-group>
         <input type="submit" name="acao" value="Cadastrar" >
     </div><!--form-group-->

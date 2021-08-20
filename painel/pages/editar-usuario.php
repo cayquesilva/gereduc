@@ -1,3 +1,4 @@
+<?php verificaPermissaoPagina(1);?>
 <div class="box-content">
     <h2><i class="fas fa-pen"></i> Editar Usuário</h2>
     <!--enctype serve para permitir envio de imagem no formulário-->

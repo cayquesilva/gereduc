@@ -1,4 +1,5 @@
 <?php
+    verificaPermissaoPagina(1);
     if(isset($_GET['inep'])){
         $inep= (int)$_GET['inep'];
         $unidade = Painel::selectLocal('tb_admin.unidades',$inep);
