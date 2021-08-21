@@ -14,6 +14,38 @@
     <div class="box-metricas">
         <div class="box-metrica-single blue">
             <div class="box-metrica-wraper">
+                <h2>Educação Infantil</h2>
+                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Educação Infantil')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Ensino Fundamental - Anos Iniciais</h2>
+                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino Fundamental - Anos Iniciais')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Ensino Fundamental - Anos Finais</h2>
+                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino Fundamental - Anos Finais')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Ensino de Jovens e Adultos - EJA</h2>
+                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino de Jovens e Adultos - EJA')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
+                <h2>Atendimento Educacional Especializado - AEE</h2>
+                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Atendimento Educacional Especializado - AEE')); ?></p>
+            </div><!--box-metrica-wraper-->
+        </div><!--box-metrica-single-->
+    </div><!--box-metricas-->
+    <div class="box-metricas">
+        <div class="box-metrica-single blue">
+            <div class="box-metrica-wraper">
                 <h2>Total de Unidades</h2>
                 <p><?php echo count(Painel::selectAll('tb_admin.unidades')); ?></p>
             </div><!--box-metrica-wraper-->
@@ -129,7 +161,6 @@
                 <td>Programas Ativos</td>
                 <td>Registrar Programas</td>
                 <td>Editar</td>
-                <td>Excluir</td>
             </tr>
             <?php
                 foreach ($unidades as $key => $value) {
@@ -142,7 +173,6 @@
                 <td><?php echo Painel::contaPrograma('tb_unidades.programas',$value['inep']); ?></td>
                 <td><a actionBtn="programas" class="btn program" href="<?php echo INCLUDE_PATH_PAINEL?>registro-programas?inep=<?php echo $value['inep'];?>"><i class="fas fa-tasks"></i></a></td>
                 <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-local?inep=<?php echo $value['inep'];?>"><i class=" fa fa-pen"></i></a></td>
-                <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-unidades?excluir=<?php echo $value['inep'];?>"><i class=" fa fa-times"></i></a></td>
             </tr>
             <?php } ?>
         </table>

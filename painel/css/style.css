@@ -283,16 +283,19 @@ aside.menu{
     text-align: center;
     display: flex;
     flex-wrap: wrap;
+    border-radius: 20px;
 }
 
 .box-metrica-single{
     flex: 20%;
     padding: 25px;
     margin: 4px;
+    border-radius: 20px;
+    box-shadow: 2px 2px 2px #455a64;
 }
 
 .box-metrica-wraper h2,.box-metrica-wraper p{
-    font-size: 19px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
 }

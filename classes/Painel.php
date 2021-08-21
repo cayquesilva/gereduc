@@ -401,6 +401,14 @@ class Painel{
             $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` WHERE `$agente` = 's'");
             $sql->execute();
             $result = $sql->rowcount();
+        }else if($agente == 'Educação Infantil' || 
+        $agente == 'Ensino Fundamental - Anos Iniciais' || 
+        $agente == 'Ensino Fundamental - Anos Finais' || 
+        $agente == 'Ensino de Jovens e Adultos - EJA' || 
+        $agente == 'Atendimento Educacional Especializado - AEE'){
+            $sql = MySql::conectar()->prepare("SELECT * FROM  `$tabela` WHERE `etapas`  = '$agente'");
+            $sql->execute();
+            $result = $sql->rowcount();
         }else{
             $sql = MySql::conectar()->prepare("SELECT sum($agente) FROM  `$tabela`");
             $sql->execute();
