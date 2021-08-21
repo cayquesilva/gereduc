@@ -5,148 +5,157 @@
     $user = isset($_SESSION['user']) ? $_SESSION['user'] : null;
     $unidades = Painel::selectAll('tb_admin.unidades',($paginaAtual-1) * $porPagina,$porPagina);
 ?>
-<div class="box-content w100">
-    <h2><i class="fa fa-home"></i> Olá <span><?php echo $_SESSION['nome'];?></span>, seja bem vindo(a) ao <span><?php echo NOME_EMPRESA;?></span></h2>
+<div class="box-content w100 titulo">
+    <h2>Olá <span><?php echo $_SESSION['nome'];?></span>, seja bem vindo(a) ao <span><?php echo NOME_EMPRESA;?></span></h2>
 </div><!--box=content-->
     
 <div class="box-content w100">
-    <h2><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></i> Estatísticas Gerais</h2>
-    <div class="box-metricas">
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Educação Infantil</h2>
-                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Educação Infantil')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Ensino Fundamental - Anos Iniciais</h2>
-                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino Fundamental - Anos Iniciais')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Ensino Fundamental - Anos Finais</h2>
-                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino Fundamental - Anos Finais')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Ensino de Jovens e Adultos - EJA</h2>
-                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino de Jovens e Adultos - EJA')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Atendimento Educacional Especializado - AEE</h2>
-                <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Atendimento Educacional Especializado - AEE')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-    </div><!--box-metricas-->
-    <div class="box-metricas">
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Unidades</h2>
-                <p><?php echo count(Painel::selectAll('tb_admin.unidades')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Estudantes Matriculados</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdestudantes')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Estudantes AEE Matriculados</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdestudantesaee')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->    
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total Geral de Professores</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmas')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Professores Aee</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasaee')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Professores (Manhã)</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofmanha')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Professores (Tarde)</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdproftarde')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Professores (Noite)</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofnoite')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Professores (Integral)</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofintegral')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single blue">
-            <div class="box-metrica-wraper">
-                <h2>Total de Programas Ativos</h2>
-                <p><?php echo (Painel::contaPrograma('tb_unidades.programas')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-    </div><!--box-metricas-->
-</div><!--box=content-->
+    <h2><i class="fas fa-chalkboard-teacher" aria-hidden="true"></i></i> Estatísticas</h2>
+    <div class="cover-box-content">
+        <h3>Etapas de Ensino Ofertadas</h3>
+        <div class="box-metricas">
+            <div class="box-metrica-single blue">
+                <div class="box-metrica-wraper">
+                    <h2>Educação Infantil</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Educação Infantil')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single blue">
+                <div class="box-metrica-wraper">
+                    <h2>Ensino Fundamental - Anos Iniciais</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino Fundamental - Anos Iniciais')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single blue">
+                <div class="box-metrica-wraper">
+                    <h2>Ensino Fundamental - Anos Finais</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino Fundamental - Anos Finais')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single blue">
+                <div class="box-metrica-wraper">
+                    <h2>Ensino de Jovens e Adultos - EJA</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Ensino de Jovens e Adultos - EJA')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single blue">
+                <div class="box-metrica-wraper">
+                    <h2>Atendimento Educacional Especializado - AEE</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_unidades.etapa','Atendimento Educacional Especializado - AEE')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+        </div><!--box-metricas-->
+    </div><!--cover-box-->
+    <div class="cover-box-content">
+        <h3>Dados Gerais</h3>
+            <div class="box-metricas">
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Unidades</h2>
+                        <p><?php echo count(Painel::selectAll('tb_admin.unidades')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Estudantes Matriculados</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdestudantes')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Estudantes AEE Matriculados</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdestudantesaee')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->    
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total Geral de Professores</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmas')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Professores Aee</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasaee')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Professores (Manhã)</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofmanha')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Professores (Tarde)</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdproftarde')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Professores (Noite)</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofnoite')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Professores (Integral)</h2>
+                        <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdprofintegral')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+                <div class="box-metrica-single blue">
+                    <div class="box-metrica-wraper">
+                        <h2>Total de Programas Ativos</h2>
+                        <p><?php echo (Painel::contaPrograma('tb_unidades.programas')); ?></p>
+                    </div><!--box-metrica-wraper-->
+                </div><!--box-metrica-single-->
+            </div><!--box-metricas-->
+        </div><!--box=content-->
+    </div><!--cover-box-->
 
 <div class="box-content w100">
     <h2><i class="fas fa-landmark" aria-hidden="true"></i> Estatísticas de Infraestutura</h2>
-    <div class="box-metricas">
-        <div class="box-metrica-single yellow">
-            <div class="box-metrica-wraper">
-                <h2>Total Geral de Turmas</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmas')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single yellow">
-            <div class="box-metrica-wraper">
-                <h2>Total de Turmas Aee</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasaee')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single yellow">
-            <div class="box-metrica-wraper">
-                <h2>Total de Turmas Adaptadas</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasadapt')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single yellow">
-            <div class="box-metrica-wraper">
-                <h2>Total de Unidades com Quadra</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','quadra')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single yellow">
-            <div class="box-metrica-wraper">
-                <h2>Total de Unidades com Bibliotecas</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','biblioteca')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-        <div class="box-metrica-single yellow">
-            <div class="box-metrica-wraper">
-                <h2>Total de Unidades com Lab. de Informática</h2>
-                <p><?php echo (Painel::contaAgentes('tb_admin.unidades','labinfo')); ?></p>
-            </div><!--box-metrica-wraper-->
-        </div><!--box-metrica-single-->
-    </div><!--box-metricas-->
+    <div class="cover-box-content">
+        <h3>Turmas e Equipamentos</h3>
+        <div class="box-metricas">
+            <div class="box-metrica-single yellow">
+                <div class="box-metrica-wraper">
+                    <h2>Total Geral de Turmas</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmas')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single yellow">
+                <div class="box-metrica-wraper">
+                    <h2>Total de Turmas Aee</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasaee')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single yellow">
+                <div class="box-metrica-wraper">
+                    <h2>Total de Turmas Adaptadas</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_admin.unidades','qtdturmasadapt')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single yellow">
+                <div class="box-metrica-wraper">
+                    <h2>Total de Unidades com Quadra</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_admin.unidades','quadra')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single yellow">
+                <div class="box-metrica-wraper">
+                    <h2>Total de Unidades com Bibliotecas</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_admin.unidades','biblioteca')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+            <div class="box-metrica-single yellow">
+                <div class="box-metrica-wraper">
+                    <h2>Total de Unidades com Lab. de Informática</h2>
+                    <p><?php echo (Painel::contaAgentes('tb_admin.unidades','labinfo')); ?></p>
+                </div><!--box-metrica-wraper-->
+            </div><!--box-metrica-single-->
+        </div><!--box-metricas-->
+    </div><!--cover-box-->
 </div><!--box=content-->
 
 <div class="box-content w100">

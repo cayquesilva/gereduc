@@ -242,10 +242,25 @@ aside.menu{
     padding: 10px;
 }
 
+.titulo{
+    text-align: center;
+}
+
 .box-content{
     background: white;
     padding: 10px;
     margin-bottom: 25px;
+}
+
+.box-content h3{
+    text-align: center;
+}
+
+.cover-box-content{
+    border: 2px solid #229e7f;
+    border-radius: 20px;
+    padding: 6px;
+    margin-top: 12px;
 }
 
 .box-content span,
@@ -404,7 +419,7 @@ aside.menu{
 fieldset{
     padding: 8px;
     margin: 10px 0;
-    border: 1px solid #1de9b6;
+    border: 2px solid #229e7f;
     border-radius: 10px;
 }
 
