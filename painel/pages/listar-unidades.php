@@ -13,49 +13,50 @@
 ?>
 <div class="box-content">
     <h2><i class="fas fa-book"></i> Unidades Cadastradas</h2>
-
+    <a <?php selecionadoMenu('baixar-modelo'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH ?>baixar-modelo">Baixar Modelo de Importação</a>
     <a <?php selecionadoMenu('importar-unidade'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>importar-unidade">Importar Unidade(s)</a>
+    
 
-<div class="wraper-table">
-    <table>
-        <tr>
-            <td>INEP</td>
-            <td>Nome da Unidade</td>
-            <td>Gestor(a)</td>
-            <td>Contato</td>
-            <td>Programas Ativos</td>
-            <td>Registrar Programas</td>
-            <td>Editar</td>
-            <td>Excluir</td>
-        </tr>
-        <?php
-            foreach ($unidades as $key => $value) {
+    <div class="wraper-table">
+        <table>
+            <tr>
+                <td>INEP</td>
+                <td>Nome da Unidade</td>
+                <td>Gestor(a)</td>
+                <td>Contato</td>
+                <td>Programas Ativos</td>
+                <td>Registrar Programas</td>
+                <td>Editar</td>
+                <td>Excluir</td>
+            </tr>
+            <?php
+                foreach ($unidades as $key => $value) {
+            ?>
+            <tr>
+                <td><?php echo $value['inep']; ?></td>
+                <td><?php echo $value['nome_unidade']; ?></td>
+                <td><?php echo $value['nome_gestor']; ?></td>
+                <td><?php echo $value['contato_gestor']; ?></td>
+                <td><?php echo Painel::contaPrograma('tb_unidades.programas',$value['inep']); ?></td>
+                <td><a actionBtn="programas" class="btn program" href="<?php echo INCLUDE_PATH_PAINEL?>registro-programas?inep=<?php echo $value['inep'];?>"><i class="fas fa-tasks"></i></a></td>
+                <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-local?inep=<?php echo $value['inep'];?>"><i class=" fa fa-pen"></i></a></td>
+                <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-unidades?excluir=<?php echo $value['inep'];?>"><i class=" fa fa-times"></i></a></td>
+            </tr>
+            <?php } ?>
+        </table>
+    </div><!--wraper-table-->
+
+    <div class="paginacao">
+        <?php 
+        //ceil arredonda para o proximo inteiro.
+            $totalPaginas = ceil(count(Painel::selectAll('tb_admin.unidades')) / $porPagina);
+            for($i = 1;$i <= $totalPaginas;$i++) {
+                if($i == $paginaAtual)
+                    echo '<a class="pagina-selecionada" href="'.INCLUDE_PATH_PAINEL.'listar-unidades?pagina='.$i.'">'.$i.'</a>';
+                else
+                    echo '<a href="'.INCLUDE_PATH_PAINEL.'listar-unidades?pagina='.$i.'">'.$i.'</a>';
+            }
         ?>
-        <tr>
-            <td><?php echo $value['inep']; ?></td>
-            <td><?php echo $value['nome_unidade']; ?></td>
-            <td><?php echo $value['nome_gestor']; ?></td>
-            <td><?php echo $value['contato_gestor']; ?></td>
-            <td><?php echo Painel::contaPrograma('tb_unidades.programas',$value['inep']); ?></td>
-            <td><a actionBtn="programas" class="btn program" href="<?php echo INCLUDE_PATH_PAINEL?>registro-programas?inep=<?php echo $value['inep'];?>"><i class="fas fa-tasks"></i></a></td>
-            <td><a actionBtn="editar" class="btn edit" href="<?php echo INCLUDE_PATH_PAINEL?>editar-local?inep=<?php echo $value['inep'];?>"><i class=" fa fa-pen"></i></a></td>
-            <td><a actionBtn="deletar" class="btn del" href="<?php echo INCLUDE_PATH_PAINEL?>listar-unidades?excluir=<?php echo $value['inep'];?>"><i class=" fa fa-times"></i></a></td>
-        </tr>
-        <?php } ?>
-    </table>
-</div><!--wraper-table-->
-
-<div class="paginacao">
-    <?php 
-    //ceil arredonda para o proximo inteiro.
-        $totalPaginas = ceil(count(Painel::selectAll('tb_admin.unidades')) / $porPagina);
-        for($i = 1;$i <= $totalPaginas;$i++) {
-            if($i == $paginaAtual)
-                echo '<a class="pagina-selecionada" href="'.INCLUDE_PATH_PAINEL.'listar-unidades?pagina='.$i.'">'.$i.'</a>';
-            else
-                echo '<a href="'.INCLUDE_PATH_PAINEL.'listar-unidades?pagina='.$i.'">'.$i.'</a>';
-        }
-    ?>
-</div><!--paginacao-->
+    </div><!--paginacao-->
 
 </div><!--box-content-->

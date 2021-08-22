@@ -46,7 +46,11 @@ $url = isset($_GET['url']) ? $_GET['url'] : 'home';
     <div class="container-principal">
         <?php
             if(file_exists('pages/'.$url.".php")){
-                include('pages/'.$url.".php");
+                if($url == 'baixar-modelo'){
+                    header('Location: pages/' .$url.".php");
+                }else{
+                    include('pages/'.$url.".php");
+                }
             }else{
                 //pagina não encontrada
                 if($url != 'contato'){
