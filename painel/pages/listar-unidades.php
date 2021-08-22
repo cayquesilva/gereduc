@@ -14,6 +14,8 @@
 <div class="box-content">
     <h2><i class="fas fa-book"></i> Unidades Cadastradas</h2>
 
+    <a <?php selecionadoMenu('importar-unidade'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>importar-unidade">Importar Unidade(s)</a>
+
 <div class="wraper-table">
     <table>
         <tr>

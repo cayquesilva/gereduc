@@ -303,6 +303,60 @@ class Painel{
         }        
     }
 
+    public static function importInsert($tabela,$file){
+        $certo = true;
+        if(!empty($file)){
+            $arquivo = New DOMDocument();
+            $arquivo->load($file);
+            $linhas = $arquivo->getElementsByTagName("Row");
+            $sql = MySql::conectar()->prepare("INSERT INTO `$tabela` VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)");
+            foreach($linhas as $key => $linha){
+                $col=0;
+                //recupera cada linha da planilha e salva  em array
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(0)->nodeValue);
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(1)->nodeValue;
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(2)->nodeValue;
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(3)->nodeValue;
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(4)->nodeValue;
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(5)->nodeValue);
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(6)->nodeValue;
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(7)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(8)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(9)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(10)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(11)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(12)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(13)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(14)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(15)->nodeValue);
+                    $importLinhas[$key][$col++] = intval($linha->getElementsByTagName("Data")->item(16)->nodeValue);
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(17)->nodeValue;
+                    $importLinhas[$key][$col++] = $linha->getElementsByTagName("Data")->item(18)->nodeValue;
+                    $importLinhas[$key][$col] = $linha->getElementsByTagName("Data")->item(19)->nodeValue;
+            };
+            //inserir linha a linhas no BD
+            //var_dump($key);
+            for($cont = 1; $cont <= $key; $cont++){
+                $verifica = $importLinhas[$cont][0];
+                $nome_verifica = $importLinhas[$cont][1];
+                $sql2 = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE INEP = $verifica");
+                $sql2->execute();
+                if($sql2->rowcount() == 0){
+                    $sql->execute(array($importLinhas[$cont][0],$importLinhas[$cont][1],$importLinhas[$cont][2],$importLinhas[$cont][3],
+                    $importLinhas[$cont][4],$importLinhas[$cont][5],$importLinhas[$cont][6],$importLinhas[$cont][7],$importLinhas[$cont][8],
+                    $importLinhas[$cont][9],$importLinhas[$cont][10],$importLinhas[$cont][11],$importLinhas[$cont][12],$importLinhas[$cont][13],
+                    $importLinhas[$cont][14],$importLinhas[$cont][15],$importLinhas[$cont][16],$importLinhas[$cont][17],$importLinhas[$cont][18],$importLinhas[$cont][19]));
+                }else{
+                    $certo = false;
+                    Painel::alerta('erro',"Você está tentando cadastrar a Unidade de Nome = ".$nome_verifica." e de INEP = ".$verifica." que já existe! Opte por editar essa Unidade.");
+                }
+            }
+        }else{
+            $certo = false;
+        };
+        return $certo;
+    }
+
     public static function insert($arr){
         //$arr pega o post como um todo (todos os valores do form)
         $certo = true;
