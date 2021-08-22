@@ -270,6 +270,45 @@ aside.menu{
 
 }
 
+.dropdown ul{
+    list-style: none;
+    position: relative;
+    width: 100%;
+}
+
+.dropdown ul li:hover ul{
+    visibility: visible;
+    box-shadow: 0px 1px 4px #2f3042 ;
+    border-radius: 8px;
+}
+
+.dropdown ul li h2{
+    right: 0;
+}
+
+.dropdown ul ul{
+    position: absolute;
+    visibility: hidden;
+}
+
+.dropdown ul li a{
+    padding: 12px;
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background-color: #229e7f;
+    color: white;
+    border-radius: 5px;
+}
+
+.dropdown ul li a:first-child{
+    border-bottom: 1px solid white;
+}
+
+.dropdown ul li a:hover{
+    font-weight: bolder;
+}
+
 .items-menu{
     margin-top: 30px;
 }

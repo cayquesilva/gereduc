@@ -15,10 +15,6 @@
         $html = '';
         $html .= '<table border="1">';
         $html .= '<tr>';
-        $html .= '<td colspan = "20">Dados da Unidade de Ensino</td>';
-        $html .= '</tr>';
-        //nome de cada coluna
-        $html .= '<tr>';
         $html .= '<td><b>INEP</b></td>';
         $html .= '<td><b>nome_unidade</b></td>';
         $html .= '<td><b>nome_gestor</b></td>';

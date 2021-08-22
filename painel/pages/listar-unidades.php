@@ -12,9 +12,19 @@
     }
 ?>
 <div class="box-content">
-    <h2><i class="fas fa-book"></i> Unidades Cadastradas</h2>
-    <a <?php selecionadoMenu('baixar-modelo'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH ?>baixar-modelo">Baixar Modelo de Importação</a>
-    <a <?php selecionadoMenu('importar-unidade'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>importar-unidade">Importar Unidade(s)</a>
+    <h2 class="left"><i class="fas fa-book"></i> Unidades Cadastradas</h2>
+    <div class="dropdown right">
+        <ul>
+            <li><h2><i class="fas fa-file-download"></i> importação e Unidades</h2>
+                <ul>
+                    <li><a <?php selecionadoMenu('baixar-modelo'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH ?>baixar-modelo">Baixar Modelo de Importação</a></li>
+                    <li><a <?php selecionadoMenu('importar-unidade'); verificaPermissaoMenu(2);?> href="<?php echo INCLUDE_PATH_PAINEL ?>importar-unidade">Importar Unidade(s)</a></li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div class="clear"></div>
+    
     
 
     <div class="wraper-table">
