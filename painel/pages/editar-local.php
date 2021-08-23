@@ -17,7 +17,7 @@
     <form method=post enctype="multipart/form-data">
         <?php 
             if(isset($_POST['acao'])){
-                if(Painel::editarItem($arr)){
+                if(Painel::editarItemUni($_POST)){
                     $unidade = Painel::selectLocal('tb_admin.unidades',$inep);
                     Painel::alerta('sucesso','A unidade foi editada com sucesso!');
                 }else{
@@ -79,16 +79,17 @@
                     <?php foreach (Painel::$turnos as $key => $value) {  
                         if(Painel::contaItem('tb_unidades.turno',$inep,'turnos',$value) == 0){
                             echo '<div class="check-item">';
-                            echo "<input type='checkbox' name='turnos[]' id='.$value.' value='.$value.'>";
+                            echo '<input type="checkbox" name="turnos[]" id="'.$value.'" value="'.$value.'">';
                             echo '<label for="'.$value.'">'.$value.'</label>';
-                            echo '</div>'; 
+                            echo '</div>';
                         }else{
                             echo '<div class="check-item">';
-                            echo "<input type='checkbox' checked name='turnos[]' id='.$value.' value='.$value.'>";
+                            echo '<input type="checkbox" checked name="turnos[]" id="'.$value.'" value="'.$value.'">';
                             echo '<label for="'.$value.'">'.$value.'</label>';
                             echo '</div>'; 
                         }                         
                     }?>
+                    
                 </div>
             </div><!--form-group-->
             <div class="form-group check">
@@ -169,7 +170,7 @@
                 </div><!--form-group-->
                 <div class="form-group qtd">
                     <h3>Quantidade de Professores (AEE):</h3>
-                    <input type="number" name="qtdeprofaee" min="0" value="<?php echo $unidade['qtdprofaee'];?>">
+                    <input type="number" name="qtdprofaee" min="0" value="<?php echo $unidade['qtdprofaee'];?>">
                 </div><!--form-group-->
             </div><!--box-qtd-->
         </fieldset>
@@ -201,6 +202,9 @@
         </fieldset>
             <div class=form-group>
                 <input type="hidden" name="nome_tabela" value="tb_admin.unidades">
+                <input type="hidden" name="nome_tabela2" value="tb_unidades.etapa">
+                <input type="hidden" name="nome_tabela3" value="tb_unidades.serie">
+                <input type="hidden" name="nome_tabela4" value="tb_unidades.turno">
                 <input type="submit" name="acao" value="Atualizar" >
             </div><!--form-group-->
     </form>

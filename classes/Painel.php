@@ -536,9 +536,14 @@ class Painel{
         return $sql->fetchAll();
     }
 
-    public static function contaItem($tabela,$inep,$col,$item){
-        $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE inep = ? AND `$col` = ?");
-        $sql->execute(array($inep,$item));
+    public static function contaItem($tabela,$inep,$col,$item=null){
+        if($item==null){
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE inep = ?");
+            $sql->execute(array($inep,$item));
+        }else{
+            $sql = MySql::conectar()->prepare("SELECT * FROM `$tabela` WHERE inep = ? AND `$col` = ?");
+            $sql->execute(array($inep,$item));
+        }
         return $sql->rowCount();
     }
 
@@ -647,67 +652,47 @@ class Painel{
         $nome_tabela3 = $arr['nome_tabela3'];
         $nome_tabela4 = $arr['nome_tabela4'];
         $query = "UPDATE `$nome_tabela` SET ";
-        $query4 = "UPDATE `$nome_tabela4` SET inep = ? , turnos = ?";
         foreach ($arr as $key => $value) {
             $nome = $key;
-            $valor = $value;
-            if($nome == 'inep'){
+            if($nome == 'inep' || $value != ''){
                 $existeinep = true;
             }
             if($nome == 'acao' || $nome == 'nome_tabela' || $nome =='id' || $nome == 'nome_tabela2' || $nome == 'nome_tabela3' || $nome == 'nome_tabela4')
                 //se for o post acao ou post nome_tabela ignora e volta o foreach
                 continue;
             if($nome == 'etapas'){
-                $etapas = $arr['etapas'];
-                if($etapas == ''){
-                    foreach ($etapas as $e_value){
+                    $query2 = "DELETE FROM `$nome_tabela2` WHERE inep = ?";
+                    $sql2 = MySql::conectar()->prepare($query2);
+                    $sql2->execute(array($arr['inep']));
+                    foreach ($value as $e_value){
                         $query2 = "INSERT INTO `$nome_tabela2` VALUES (?,?)";
                         $sql2 = MySql::conectar()->prepare($query2);
                         $sql2->execute(array($arr['inep'],$e_value));
                     }
-                }else{
-                    foreach($etapas as $e_value){
-                        $query2 = "UPDATE `$nome_tabela2` SET inep = ? , etapas = ?";
-                        $sql2 = MySql::conectar()->prepare($query2);
-                        $sql2->execute(array($arr['inep'],$e_value));
-                    }  
+                    continue;
                 }
-                continue;
-            }
             if($nome == 'series'){
-                $series = $arr['series'];
-                if($series == ''){
-                    foreach ($series as $s_value){
+                    $query3 = "DELETE FROM `$nome_tabela3` WHERE inep = ?";
+                    $sql3 = MySql::conectar()->prepare($query3);
+                    $sql3->execute(array($arr['inep']));
+                    foreach ($value as $s_value){
                         $query3 = "INSERT INTO `$nome_tabela3` VALUES (?,?)";
                         $sql3 = MySql::conectar()->prepare($query3);
                         $sql3->execute(array($arr['inep'],$s_value));
                     }
-                }else{
-                    foreach ($series as $s_value){
-                        $query3 = "UPDATE `$nome_tabela3` SET inep = ? , series = ?";
-                        $sql3 = MySql::conectar()->prepare($query3);
-                        $sql3->execute(array($arr['inep'],$s_value));
-                    }  
+                    continue;
                 }
-                continue;
-            }
             if($nome == 'turnos'){
-                $turnos = $arr['turnos'];
-                if($turnos == ''){
-                    foreach ($turnos as $t_value){
+                    $query4 = "DELETE FROM `$nome_tabela4` WHERE inep = ?";
+                    $sql4 = MySql::conectar()->prepare($query4);
+                    $sql4->execute(array($arr['inep']));           
+                    foreach ($value as $t_value){
                         $query4 = "INSERT INTO `$nome_tabela4` VALUES (?,?)";
                         $sql4 = MySql::conectar()->prepare($query4);
                         $sql4->execute(array($arr['inep'],$t_value));    
                     }
-                }else{
-                    foreach ($turnos as $t_value){
-                        $query4 = "UPDATE `$nome_tabela4` SET inep = ? , turnos = ?";
-                        $sql4 = MySql::conectar()->prepare($query4);
-                        $sql4->execute(array($arr['inep'],$t_value));
-                    }
+                    continue;
                 }
-                continue;
-            }
             if($value == ''){
                 //se tiver algo em branco, quebra e da erro
                 $certo = false;
@@ -726,19 +711,17 @@ class Painel{
         }
         //concatenando
         if($certo){
-            if(!$existeinep){
-                $sql = MySql::conectar()->prepare($query." WHERE inep = ?");
-            //usa o array criado para substituir as "?"
-            $parametros[] = $arr['inep'];
-            }else{
+            if($existeinep){
                 $sql = MySql::conectar()->prepare($query." WHERE inep = ?");
                 //usa o array criado para substituir as "?"
-                $parametros[] = $arr['inep'];
-            }                
-            $sql->execute($parametros);
+                $parametros[] = $arr['inep'];               
+                $sql->execute($parametros);
+            }else{
+                $certo = false;
+            }
         }
         return $certo;
-}
+    }
     
 
     public static function orderItem($tabela,$orderType,$idItem){
