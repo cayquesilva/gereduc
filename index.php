@@ -1,5 +1,5 @@
 <?php include('config.php')?>
-<?php Site::contadorVisita();?>
+<?php //Site::contadorVisita();?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
